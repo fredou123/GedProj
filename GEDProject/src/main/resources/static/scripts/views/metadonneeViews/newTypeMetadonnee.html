@@ -1,0 +1,20 @@
+<div>
+     <div class="">
+            <h4 class="modal-title" id="modal-title">Entrez un nouveau type metadonnée</h4>
+        </div>
+        <div class="">
+          <center>
+            <ul class="list-group">
+            <li class="list-group-item list-group-item-success">
+              <label for="text"> Nom de la métadonnée  </label>
+              <input type="text" class="form-control" ng-model="nom"></input>
+            </li>          
+          </ul>
+          </center>
+          
+        </div>
+            <div class="">
+            <button class="btn btn-primary" type="button" ng-click="save(nom)">Enregistrer</button>
+            <button class="btn btn-warning" type="button" ng-click="close()">Annuler</button>
+        </div> 
+</div>
