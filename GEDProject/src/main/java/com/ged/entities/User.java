@@ -10,86 +10,132 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @SuppressWarnings("serial")
 @Entity
 public class User implements Serializable {
 
-    @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
-    private Long                            id;
-    private String                          nom;
-    private String                          Prenom;
-    private String                          login;
-    private String                          mdp;
-    @ManyToMany
-    private Collection<Profil>              profils;
-    @OneToMany 
-    private Collection<HistoriqueConnexion> connexions;
-    @ManyToMany
-    private Collection<Groupe>              groupes;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String nom;
+	private String Prenom;
+	private String login;
+	private String mdp;
+	@ManyToMany
+	private Collection<Profil> profils;
+	@OneToMany
+	private Collection<HistoriqueConnexion> connexions;
+	@ManyToMany
+	private Collection<Groupe> groupes;
 
-    public String getNom() {
-        return nom;
-    }
+	private boolean accountNonExpired;
 
-    public void setNom( String nom ) {
-        this.nom = nom;
-    }
+	private boolean accountNonLocked;
 
-    public String getPrenom() {
-        return Prenom;
-    }
+	private boolean credentialsNonExpired;
 
-    public void setPrenom( String prenom ) {
-        Prenom = prenom;
-    }
+	private boolean enabled;
 
-    public String getLogin() {
-        return login;
-    }
+	public String getNom() {
+		return nom;
+	}
 
-    public void setLogin( String login ) {
-        this.login = login;
-    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    public String getMdp() {
-        return mdp;
-    }
+	public String getPrenom() {
+		return Prenom;
+	}
 
-    public void setMdp( String mdp ) {
-        this.mdp = mdp;
-    }
+	public void setPrenom(String prenom) {
+		Prenom = prenom;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public String getLogin() {
+		return login;
+	}
 
-    public Collection<Profil> getProfils() {
-        return profils;
-    }
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-    public void setProfils( Collection<Profil> profils ) {
-        this.profils = profils;
-    }
+	public String getMdp() {
+		return mdp;
+	}
 
-    public Collection<HistoriqueConnexion> getConnexions() {
-        return connexions;
-    }
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
 
-    public void setConnexions( Collection<HistoriqueConnexion> connexions ) {
-        this.connexions = connexions;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Collection<Groupe> getGroupes() {
-        return groupes;
-    }
+	public Collection<Profil> getProfils() {
+		return profils;
+	}
 
-    public void setGroupes( Collection<Groupe> groupes ) {
-        this.groupes = groupes;
-    }
+	public void setProfils(Collection<Profil> profils) {
+		this.profils = profils;
+	}
 
-    public User() {
+	public Collection<HistoriqueConnexion> getConnexions() {
+		return connexions;
+	}
 
-    }
+	public void setConnexions(Collection<HistoriqueConnexion> connexions) {
+		this.connexions = connexions;
+	}
+
+	public Collection<Groupe> getGroupes() {
+		return groupes;
+	}
+
+	public void setGroupes(Collection<Groupe> groupes) {
+		this.groupes = groupes;
+	}
+
+	public boolean isAccountNonExpired() {
+		return accountNonExpired;
+	}
+
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
+	}
+
+	public boolean isAccountNonLocked() {
+		return accountNonLocked;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+
+	public boolean isCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
+
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public User() {
+
+	}
 
 }
