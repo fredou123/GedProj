@@ -16,16 +16,16 @@ import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
 import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.entities.TypeDocument;
 import com.ged.entities.TypeDocumentTypeMetadonnee;
-import com.ged.metier.TypeDocumentMetier;
-import com.ged.metier.TypeDocumentTypeMetadonneeMetier;
+import com.ged.service.TypeDocumentService;
+import com.ged.service.TypeDocumentTypeMetadonneeService;
 
 @RestController
 public class TypeDocumentController {
 	
 	@Autowired
-	private TypeDocumentMetier metier;
+	private TypeDocumentService metier;
 	@Autowired
-	private TypeDocumentTypeMetadonneeMetier metier1;
+	private TypeDocumentTypeMetadonneeService metier1;
 	
 	
     public TypeDocumentDTO saveTypeDocument( @RequestBody TypeDocumentDTO td ) {

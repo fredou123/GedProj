@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,29 +15,29 @@ import com.ged.entities.TypeDossier;
 import com.ged.entities.TypeDossierTypeDocument;
 import com.ged.entities.TypeDossierTypeMetadonnee;
 import com.ged.entities.TypeMetadonnee;
-import com.ged.metier.DtoMetier;
-import com.ged.metier.TypeDocumentMetier;
-import com.ged.metier.TypeDocumentTypeMetadonneeMetier;
-import com.ged.metier.TypeDossierMetier;
-import com.ged.metier.TypeDossierTypeDocumentMetier;
-import com.ged.metier.TypeDossierTypeMetadonneeMetier;
-import com.ged.metier.TypeMetadonneeMetier;
+import com.ged.service.DtoService;
+import com.ged.service.TypeDocumentService;
+import com.ged.service.TypeDocumentTypeMetadonneeService;
+import com.ged.service.TypeDossierService;
+import com.ged.service.TypeDossierTypeDocumentService;
+import com.ged.service.TypeDossierTypeMetadonneeService;
+import com.ged.service.TypeMetadonneeService;
 
 @Service
-public class DtoMetierImpl implements DtoMetier {
+public class DtoServiceImpl implements DtoService {
 	
 	@Autowired
-	private TypeDocumentTypeMetadonneeMetier docMeta;
+	private TypeDocumentTypeMetadonneeService docMeta;
 	@Autowired
-	private TypeDossierTypeDocumentMetier dosDoc;
+	private TypeDossierTypeDocumentService dosDoc;
 	@Autowired
-	private TypeDossierTypeMetadonneeMetier dosMeta;
+	private TypeDossierTypeMetadonneeService dosMeta;
 	@Autowired
-	private TypeDossierMetier dos;
+	private TypeDossierService dos;
 	@Autowired
-	private TypeDocumentMetier doc;
+	private TypeDocumentService doc;
 	@Autowired
-	private TypeMetadonneeMetier meta;
+	private TypeMetadonneeService meta;
 	
 	@Override
 	public TypeDocument transformTypeDocumentDTO (TypeDocumentDTO tDTO){

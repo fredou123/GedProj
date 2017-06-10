@@ -1,6 +1,4 @@
-package com.ged.metier;
-
-import org.springframework.stereotype.Service;
+package com.ged.service;
 
 import com.ged.dto.TypeDocumentDTO;
 import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
@@ -15,7 +13,7 @@ import com.ged.entities.TypeDossierTypeDocument;
 import com.ged.entities.TypeDossierTypeMetadonnee;
 import com.ged.entities.TypeMetadonnee;
 
-public interface DtoMetier {
+public interface DtoService {
 	
 	public TypeDocument transformTypeDocumentDTO (TypeDocumentDTO tDTO);
 	

@@ -1,4 +1,4 @@
-package com.ged.metier;
+package com.ged.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.entities.TypeDossierTypeDocument;
 
-public interface TypeDossierTypeDocumentMetier {
+public interface TypeDossierTypeDocumentService {
 	public TypeDossierTypeDocumentDTO saveTypeDossierTypeDocument(TypeDossierTypeDocumentDTO value);
 	public TypeDossierTypeDocument getTypeDossierTypeDocument (Long id);
 	public List<TypeDossierTypeDocument> getByIds (Collection<Long> ids);

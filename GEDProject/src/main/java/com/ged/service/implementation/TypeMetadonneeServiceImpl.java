@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,16 +11,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ged.dao.TypeMetadonneeRepository;
 import com.ged.dto.TypeMetadonneeDTO;
 import com.ged.entities.TypeMetadonnee;
-import com.ged.metier.DtoMetier;
-import com.ged.metier.TypeMetadonneeMetier;
+import com.ged.service.DtoService;
+import com.ged.service.TypeMetadonneeService;
 
 @Service
-public class TypeMetadonneeMetierImpl implements TypeMetadonneeMetier {
+public class TypeMetadonneeServiceImpl implements TypeMetadonneeService {
 	
 	@Autowired
 	private TypeMetadonneeRepository repository;
 	
-	private DtoMetier dto;
+	private DtoService dto;
 
 	@Override
 	public TypeMetadonnee getTypeMetadonnee(Long id) {

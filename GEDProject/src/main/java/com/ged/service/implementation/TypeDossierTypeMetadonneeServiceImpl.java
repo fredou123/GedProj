@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,18 +10,16 @@ import org.springframework.stereotype.Service;
 import com.ged.dao.TypeDossierTypeMetadonneeRepository;
 import com.ged.dto.TypeDossierTypeMetadonneeDTO;
 import com.ged.entities.TypeDossierTypeMetadonnee;
-import com.ged.metier.DtoMetier;
-import com.ged.metier.TypeDossierMetier;
-import com.ged.metier.TypeDossierTypeMetadonneeMetier;
-import com.ged.metier.TypeMetadonneeMetier;
+import com.ged.service.DtoService;
+import com.ged.service.TypeDossierTypeMetadonneeService;
 
 @Service
-public class TypeDossierTypeMetadonneeMetierImpl implements TypeDossierTypeMetadonneeMetier{
+public class TypeDossierTypeMetadonneeServiceImpl implements TypeDossierTypeMetadonneeService{
 	
 	@Autowired
 	private TypeDossierTypeMetadonneeRepository repository;
 	@Autowired
-	private DtoMetier dto;
+	private DtoService dto;
 	@Override
 	public TypeDossierTypeMetadonneeDTO saveTypeDossierTypeMetadonnee(
 			TypeDossierTypeMetadonneeDTO value) {

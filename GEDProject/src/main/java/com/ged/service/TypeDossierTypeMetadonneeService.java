@@ -1,4 +1,4 @@
-package com.ged.metier;
+package com.ged.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import com.ged.dto.TypeDossierTypeMetadonneeDTO;
 import com.ged.entities.TypeDossierTypeMetadonnee;
 
-public interface TypeDossierTypeMetadonneeMetier {
+public interface TypeDossierTypeMetadonneeService {
 	
 	public TypeDossierTypeMetadonneeDTO saveTypeDossierTypeMetadonnee(TypeDossierTypeMetadonneeDTO value);
 	public TypeDossierTypeMetadonnee getTypeDossierTypeMetadonnee (Long id);

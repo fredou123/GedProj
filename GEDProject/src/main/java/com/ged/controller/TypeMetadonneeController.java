@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeMetadonneeDTO;
 import com.ged.entities.TypeMetadonnee;
-import com.ged.metier.TypeMetadonneeMetier;
+import com.ged.service.TypeMetadonneeService;
 
 @RestController
 public class TypeMetadonneeController {
 	
 	@Autowired
-	private TypeMetadonneeMetier metier;
+	private TypeMetadonneeService metier;
 	
 	@RequestMapping( value = "/typeMetadonnees", method = RequestMethod.POST )
     public TypeMetadonneeDTO saveTypeMetadonnee( @RequestBody TypeMetadonneeDTO tm ) {

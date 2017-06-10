@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,22 +16,22 @@ import com.ged.dto.TypeDossierTypeMetadonneeDTO;
 import com.ged.entities.TypeDossier;
 import com.ged.entities.TypeDossierTypeDocument;
 import com.ged.entities.TypeDossierTypeMetadonnee;
-import com.ged.metier.DtoMetier;
-import com.ged.metier.TypeDossierMetier;
-import com.ged.metier.TypeDossierTypeDocumentMetier;
-import com.ged.metier.TypeDossierTypeMetadonneeMetier;
+import com.ged.service.DtoService;
+import com.ged.service.TypeDossierService;
+import com.ged.service.TypeDossierTypeDocumentService;
+import com.ged.service.TypeDossierTypeMetadonneeService;
 
 @Service
-public class TypeDossierMetierImpl implements TypeDossierMetier {
+public class TypeDossierServiceImpl implements TypeDossierService {
 
 	@Autowired
 	private TypeDossierRepository repository;
 	@Autowired
-	private TypeDossierTypeMetadonneeMetier metier1;
+	private TypeDossierTypeMetadonneeService metier1;
 	@Autowired
-	private TypeDossierTypeDocumentMetier metier2;
+	private TypeDossierTypeDocumentService metier2;
 	@Autowired
-	private DtoMetier dto;
+	private DtoService dto;
 
 	@Override
 	public TypeDossier getTypeDossier(Long id) {

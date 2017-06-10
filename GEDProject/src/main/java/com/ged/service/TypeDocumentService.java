@@ -1,4 +1,4 @@
-package com.ged.metier;
+package com.ged.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -8,7 +8,7 @@ import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
 import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.entities.TypeDocument;
 
-public interface TypeDocumentMetier {
+public interface TypeDocumentService {
 	
 	public TypeDocument getTypeDocument(Long id);
 	public TypeDocumentDTO saveTypeDocument(TypeDocumentDTO typeDocument);

@@ -1,4 +1,4 @@
-package com.ged.metier;
+package com.ged.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import com.ged.dto.TypeDossierDTO;
 import com.ged.entities.TypeDossier;
 
-public interface TypeDossierMetier {
+public interface TypeDossierService {
 	public TypeDossier getTypeDossier(Long id);
 	public TypeDossierDTO saveTypeDossier(TypeDossierDTO typeDossier);
 	public TypeDossier deleteTypeDossier(TypeDossier typeDossier);

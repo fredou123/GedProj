@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,19 +10,19 @@ import org.springframework.stereotype.Service;
 import com.ged.dao.TypeDossierTypeDocumentRepository;
 import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.entities.TypeDossierTypeDocument;
-import com.ged.metier.TypeDocumentMetier;
-import com.ged.metier.TypeDossierMetier;
-import com.ged.metier.TypeDossierTypeDocumentMetier;
+import com.ged.service.TypeDocumentService;
+import com.ged.service.TypeDossierService;
+import com.ged.service.TypeDossierTypeDocumentService;
 
 @Service
-public class TypeDossierTypeDocumentImpl implements TypeDossierTypeDocumentMetier{
+public class TypeDossierTypeDocumentServiceImpl implements TypeDossierTypeDocumentService{
 	
 	@Autowired
 	private TypeDossierTypeDocumentRepository repository;
 	@Autowired
-	private TypeDocumentMetier doc;
+	private TypeDocumentService doc;
 	@Autowired
-	private TypeDossierMetier dos;
+	private TypeDossierService dos;
 
 	@Override
 	public TypeDossierTypeDocumentDTO saveTypeDossierTypeDocument(

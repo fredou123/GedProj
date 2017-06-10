@@ -1,10 +1,10 @@
-package com.ged.metier;
+package com.ged.service;
 
 import java.util.Collection;
 
 import com.ged.entities.Document;
 
-public interface DocumentMetier {
+public interface DocumentService {
 
     public Document saveDocument( Document document );
 

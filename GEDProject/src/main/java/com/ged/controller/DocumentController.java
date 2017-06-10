@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.entities.Document;
-import com.ged.metier.DocumentMetier;
+import com.ged.service.DocumentService;
 
 
 @RestController
 public class DocumentController {
 
     @Autowired
-    private DocumentMetier documentMetier;
+    private DocumentService documentMetier;
 
     @RequestMapping( value = "/documents", method = RequestMethod.POST )
     public Document SaveDocument( @RequestBody Document document ) {

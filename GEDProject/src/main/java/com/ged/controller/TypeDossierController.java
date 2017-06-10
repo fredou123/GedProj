@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeDossierDTO;
 import com.ged.entities.TypeDossier;
-import com.ged.metier.TypeDossierMetier;
+import com.ged.service.TypeDossierService;
 
 @RestController
 public class TypeDossierController {
 	
 	@Autowired
-	private TypeDossierMetier metier;
+	private TypeDossierService metier;
 	
 	@RequestMapping( value = "/typeDossiers", method = RequestMethod.POST )
     public TypeDossierDTO saveTypeDossier( @RequestBody TypeDossierDTO td ) {
