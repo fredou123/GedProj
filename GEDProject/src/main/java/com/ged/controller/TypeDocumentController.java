@@ -12,69 +12,56 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeDocumentDTO;
-import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
-import com.ged.dto.TypeDossierTypeDocumentDTO;
-import com.ged.entities.TypeDocument;
-import com.ged.entities.TypeDocumentTypeMetadonnee;
-import com.ged.service.TypeDocumentService;
-import com.ged.service.TypeDocumentTypeMetadonneeService;
+import com.ged.dto.TypeDocumentPostDTO;
+import com.ged.dto.service.TypeDocumentDtoService;
 
 @RestController
 public class TypeDocumentController {
 	
 	@Autowired
-	private TypeDocumentService metier;
-	@Autowired
-	private TypeDocumentTypeMetadonneeService metier1;
+	private TypeDocumentDtoService documentDto;
 	
 	
-    public TypeDocumentDTO saveTypeDocument( @RequestBody TypeDocumentDTO td ) {
+	
+	@RequestMapping( value = "/typeDocuments", method = RequestMethod.POST )
+    public TypeDocumentPostDTO saveTypeDocument( @RequestBody TypeDocumentPostDTO td ) {
        
-        return metier.saveTypeDocument(td);
+        return documentDto.saveTypeDocument(td);
     }
-    @RequestMapping( value = "/typeDocuments", method = RequestMethod.POST )
-	public TypeDocumentDTO saveTypeDocument(@RequestBody TypeDocumentDTO typeDocumentDto, 
-			@RequestBody List<TypeDocumentTypeMetadonneeDTO> listDocMeta,
-			@RequestBody List<TypeDossierTypeDocumentDTO> listDosDoc){
-		return metier.saveTypeDocument(typeDocumentDto, listDocMeta, listDosDoc);
-	}
 	
 	@RequestMapping( value = "/typeDocuments/{id}", method = RequestMethod.GET )
-    public TypeDocument getTypeDocument( @PathVariable Long id ) {
+    public TypeDocumentDTO getTypeDocument( @PathVariable Long id ) {
     	
-        return metier.getTypeDocument( id );
+        return documentDto.getTypeDocument( id );
     }
 	
 	
 	@RequestMapping( value = "/typeDocuments", method = RequestMethod.DELETE )
-    public TypeDocument deleteTypeDocument( @RequestBody TypeDocument typeDocument ) {
-		 if (typeDocument.getTypeDocumentTypeMetadonnees()!=null){
-			 for(TypeDocumentTypeMetadonnee t : typeDocument.getTypeDocumentTypeMetadonnees()){
-				 metier1.deleteTypeDocumentTypeMetadonnee(t);
-			 }
-		 }
-         return metier.deleteTypeDocument(typeDocument);
+    public TypeDocumentDTO deleteTypeDocument( @RequestBody TypeDocumentDTO typeDocumentDto ) {
+		 
+         return documentDto.deleteTypeDocument(typeDocumentDto);
     }
 	
 	@RequestMapping( value = "/typeDocuments", method = RequestMethod.GET )
     public List<TypeDocumentDTO> getAllTypeDocument( ) {
     	
-        return metier.getAllTypeDocuments();
+        return documentDto.getAllTypeDocuments();
     }
 	
 	@RequestMapping( value = "/typeDocuments", method = RequestMethod.PUT )
 	public void SetTypeDocumentById (@RequestParam String nom, @RequestParam Long id){
-		 metier.SetTypeDocumentById(nom, id);
+		documentDto.SetTypeDocumentById(nom, id);
 	}
 	
 	@RequestMapping( value = "/typeDocuments/all", method = RequestMethod.DELETE )
-    public void deleteSelectedTypeDocument(@RequestBody Collection<TypeDocument> c) {
-		metier.deleteSelectedTypeDocument(c);
+    public void deleteSelectedTypeDocument(@RequestBody Collection<TypeDocumentDTO> c) {
+		documentDto.deleteSelectedTypeDocument(c);
     }
 	
 	@RequestMapping( value = "/typeDocuments/ids", method = RequestMethod.GET )
-	public Collection<TypeDocument> getListTypeDocumentById(@RequestBody Collection<Long> ids){
-		return metier.getListTypeDocumentById(ids);
+	public Collection<TypeDocumentDTO> getListTypeDocumentById(@RequestBody Collection<Long> ids){
+		return documentDto.getListTypeDocumentById(ids);
 	}
+
 
 }

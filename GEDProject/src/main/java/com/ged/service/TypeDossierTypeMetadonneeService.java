@@ -3,15 +3,14 @@ package com.ged.service;
 import java.util.Collection;
 import java.util.List;
 
-import com.ged.dto.TypeDossierTypeMetadonneeDTO;
 import com.ged.entities.TypeDossierTypeMetadonnee;
 
 public interface TypeDossierTypeMetadonneeService {
 	
-	public TypeDossierTypeMetadonneeDTO saveTypeDossierTypeMetadonnee(TypeDossierTypeMetadonneeDTO value);
+	public TypeDossierTypeMetadonnee saveTypeDossierTypeMetadonnee(TypeDossierTypeMetadonnee t);
 	public TypeDossierTypeMetadonnee getTypeDossierTypeMetadonnee (Long id);
 	public List<TypeDossierTypeMetadonnee> getListByIds (Collection<Long> ids);
-	public List<TypeDossierTypeMetadonneeDTO> getAllTypeDossierTypeMetadonnee();
+	public List<TypeDossierTypeMetadonnee> getAllTypeDossierTypeMetadonnee();
 	public TypeDossierTypeMetadonnee deleteTypeDossierTypeMetadonnee (TypeDossierTypeMetadonnee t);
 
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ged.dto.TypeDossierDTO;
 import com.ged.entities.TypeDossier;
 import com.ged.service.TypeDossierService;
 
@@ -22,7 +21,7 @@ public class TypeDossierController {
 	private TypeDossierService metier;
 	
 	@RequestMapping( value = "/typeDossiers", method = RequestMethod.POST )
-    public TypeDossierDTO saveTypeDossier( @RequestBody TypeDossierDTO td ) {
+    public TypeDossier saveTypeDossier( @RequestBody TypeDossier td ) {
 		
         return metier.saveTypeDossier(td);
     }
@@ -41,7 +40,7 @@ public class TypeDossierController {
     }
 	
 	@RequestMapping( value = "/typeDossiers", method = RequestMethod.GET )
-    public List<com.ged.dto.TypeDossierDTO>  getAllTypeDossier( ) {	
+    public List<TypeDossier>  getAllTypeDossier( ) {	
 		
         return  metier.getAllTypeDossiers();
     }
@@ -60,5 +59,6 @@ public class TypeDossierController {
 	public Collection<TypeDossier> getListTypeDossierById(@RequestBody Collection<Long> ids){
 		return metier.getListTypeDossierById(ids);
 	}
+
 
 }

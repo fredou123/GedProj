@@ -1,6 +1,5 @@
 package com.ged.service.implementation;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ged.dao.TypeDossierTypeDocumentRepository;
-import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.entities.TypeDossierTypeDocument;
 import com.ged.service.TypeDocumentService;
 import com.ged.service.TypeDossierService;
@@ -25,16 +23,10 @@ public class TypeDossierTypeDocumentServiceImpl implements TypeDossierTypeDocume
 	private TypeDossierService dos;
 
 	@Override
-	public TypeDossierTypeDocumentDTO saveTypeDossierTypeDocument(
-			TypeDossierTypeDocumentDTO value) {
-		TypeDossierTypeDocument t = new TypeDossierTypeDocument();
-		t.setIsObligatoire(value.getIsObligatoire());
-		t.setTypeDocument(doc.getTypeDocument(value.getTypeDocument()));
-		t.setTypeDossier(dos.getTypeDossier(value.getTypeDossier()));
-		TypeDossierTypeDocument m = new TypeDossierTypeDocument();
-		m = repository.save(t);
-		TypeDossierTypeDocumentDTO mDTO = new TypeDossierTypeDocumentDTO(m);
-		return mDTO;
+	public TypeDossierTypeDocument saveTypeDossierTypeDocument(
+			TypeDossierTypeDocument value) {
+		
+		return repository.save(value);	
 	}
 
 	@Override
@@ -43,13 +35,9 @@ public class TypeDossierTypeDocumentServiceImpl implements TypeDossierTypeDocume
 	}
 
 	@Override
-	public List<TypeDossierTypeDocumentDTO> getAllTypeDossierTypeDocument() {
-		Collection<TypeDossierTypeDocument> allType =  repository.findAll();
-		List<TypeDossierTypeDocumentDTO> list = new ArrayList<TypeDossierTypeDocumentDTO>();
-		for (TypeDossierTypeDocument t : allType){
-			list.add(new TypeDossierTypeDocumentDTO(t));
-		}
-		return list;
+	public List<TypeDossierTypeDocument> getAllTypeDossierTypeDocument() {
+		return  repository.findAll();
+		
 	}
 
 	@Override
@@ -63,5 +51,4 @@ public class TypeDossierTypeDocumentServiceImpl implements TypeDossierTypeDocume
 	public List<TypeDossierTypeDocument> getByIds(Collection<Long> ids) {
 		return repository.findAll(ids);
 	}
-
 }

@@ -1,8 +1,6 @@
 package com.ged.service.implementation;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ged.dao.TypeDossierRepository;
-import com.ged.dto.TypeDossierDTO;
-import com.ged.dto.TypeDossierTypeDocumentDTO;
-import com.ged.dto.TypeDossierTypeMetadonneeDTO;
 import com.ged.entities.TypeDossier;
 import com.ged.entities.TypeDossierTypeDocument;
 import com.ged.entities.TypeDossierTypeMetadonnee;
-import com.ged.service.DtoService;
 import com.ged.service.TypeDossierService;
 import com.ged.service.TypeDossierTypeDocumentService;
 import com.ged.service.TypeDossierTypeMetadonneeService;
@@ -30,8 +24,7 @@ public class TypeDossierServiceImpl implements TypeDossierService {
 	private TypeDossierTypeMetadonneeService metier1;
 	@Autowired
 	private TypeDossierTypeDocumentService metier2;
-	@Autowired
-	private DtoService dto;
+	
 
 	@Override
 	public TypeDossier getTypeDossier(Long id) {
@@ -40,31 +33,21 @@ public class TypeDossierServiceImpl implements TypeDossierService {
 
 	@Override
 	@Transactional
-	public TypeDossierDTO saveTypeDossier(TypeDossierDTO typeDossierDto) {
+	public TypeDossier saveTypeDossier(TypeDossier typeDossier) {	
 		
-		TypeDossier d = dto.transformTypeDossierDT0(typeDossierDto);
-		d.setDate_creation(new Date());
-		d.setDate_last_modification(new Date());
-		TypeDossier dBase = repository.save(d);
+		 typeDossier = repository.save(typeDossier);
 		
-		if (dBase.getTypeDossierTypeMetadonnees()!=null){
-			for (TypeDossierTypeMetadonnee t : dBase.getTypeDossierTypeMetadonnees()){
-				t.setTypeDossier(dBase);
-				TypeDossierTypeMetadonneeDTO m = new TypeDossierTypeMetadonneeDTO(t);
-				metier1.saveTypeDossierTypeMetadonnee(m);
+			for (TypeDossierTypeMetadonnee t : typeDossier.getTypeDossierTypeMetadonnees()){
+				t.setTypeDossier(typeDossier);
+				metier1.saveTypeDossierTypeMetadonnee(t);
 			}
-		}
 		
-		if (dBase.getTypeDossierTypeDocuments()!=null){
-			for (TypeDossierTypeDocument t : dBase.getTypeDossierTypeDocuments()){
-				t.setTypeDossier(dBase);
-				TypeDossierTypeDocumentDTO m = new TypeDossierTypeDocumentDTO(t);
-				metier2.saveTypeDossierTypeDocument(m);
+			for (TypeDossierTypeDocument t : typeDossier.getTypeDossierTypeDocuments()){
+				t.setTypeDossier(typeDossier);
+				metier2.saveTypeDossierTypeDocument(t);
 			}
-		}
-		TypeDossierDTO dtoObj = new TypeDossierDTO(dBase);
-		
-		return dtoObj;
+	
+		return typeDossier;
 	}
 
 	@Override
@@ -87,15 +70,11 @@ public class TypeDossierServiceImpl implements TypeDossierService {
 	}
 
 	@Override
-	public List<TypeDossierDTO> getAllTypeDossiers() {
-		Collection<TypeDossier> allDossier = repository.findAll();
-		List<TypeDossierDTO> listAllDossiers = new ArrayList<TypeDossierDTO>();
-		for (TypeDossier t : allDossier){
-			listAllDossiers.add(new TypeDossierDTO(t));
-		}
-		return listAllDossiers;
+	public List<TypeDossier> getAllTypeDossiers() {
+		return repository.findAll();
+		
 	}
-
+	
 	@Override
 	@Transactional
 	public void SetTypeDossierById(String nom, Long id) {

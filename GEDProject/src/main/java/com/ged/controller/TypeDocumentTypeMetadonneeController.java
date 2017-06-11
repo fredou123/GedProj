@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
+import com.ged.dto.service.TypeDocumentTypeMetadonneeDtoService;
 import com.ged.entities.TypeDocumentTypeMetadonnee;
 import com.ged.service.TypeDocumentTypeMetadonneeService;
 
@@ -18,11 +19,13 @@ public class TypeDocumentTypeMetadonneeController {
 	
 	@Autowired
 	private TypeDocumentTypeMetadonneeService metier;
+	@Autowired
+	private TypeDocumentTypeMetadonneeDtoService dtoDocMeta;
 	
 	@RequestMapping( value = "/typeDocumentTypeMetadonnees", method = RequestMethod.POST )
     public TypeDocumentTypeMetadonneeDTO SaveTypeDocumentTypeMetadonnee( @RequestBody TypeDocumentTypeMetadonneeDTO t ) {
     	
-        return metier.saveTypeDocumentTypeMetadonnee(t);
+        return dtoDocMeta.saveTypeDocumentTypeMetadonnee(t);
     }
 
 	@RequestMapping( value = "/typeDocumentTypeMetadonnees/{id}", method = RequestMethod.GET )
@@ -34,7 +37,7 @@ public class TypeDocumentTypeMetadonneeController {
 	@RequestMapping( value = "/typeDocumentTypeMetadonnees", method = RequestMethod.GET )
     public List<TypeDocumentTypeMetadonneeDTO> getTypeDocumentTypeMetadonnee() {
     	
-        return metier.getAllTypeDocumentTypeMetadonnee();
+        return dtoDocMeta.getAllTypeDocumentTypeMetadonnee();
     }
 	
 	@RequestMapping( value = "/typeDocumentTypeMetadonnees", method = RequestMethod.DELETE )

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeDossierTypeDocumentDTO;
+import com.ged.dto.service.TypeDossierTypeDocumentDtoService;
 import com.ged.entities.TypeDossierTypeDocument;
 import com.ged.service.TypeDossierTypeDocumentService;
 
@@ -18,11 +19,13 @@ public class TypeDossierTypeDocumentController {
 	
 	@Autowired
 	private TypeDossierTypeDocumentService metier;
+	@Autowired
+	private TypeDossierTypeDocumentDtoService dtoDosDoc;
 	
 	@RequestMapping( value = "/typeDossierTypeDocuments", method = RequestMethod.POST )
     public TypeDossierTypeDocumentDTO SaveDocument( @RequestBody TypeDossierTypeDocumentDTO t ) {
     	
-        return metier.saveTypeDossierTypeDocument(t);
+        return dtoDosDoc.saveTypeDossierTypeDocument(t);
     }
 
 	@RequestMapping( value = "/typeDossierTypeDocuments/{id}", method = RequestMethod.GET )
@@ -34,7 +37,7 @@ public class TypeDossierTypeDocumentController {
 	@RequestMapping( value = "/typeDossierTypeDocuments", method = RequestMethod.GET )
     public List<TypeDossierTypeDocumentDTO> getTypeDossierTypeDocument() {
     	
-        return metier.getAllTypeDossierTypeDocument();
+        return dtoDosDoc.getAllTypeDossierTypeDocument();
     }
 	
 	@RequestMapping( value = "/typeDossierTypeDocuments", method = RequestMethod.DELETE )

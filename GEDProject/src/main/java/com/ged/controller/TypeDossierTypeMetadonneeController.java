@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ged.dto.TypeDossierTypeMetadonneeDTO;
 import com.ged.entities.TypeDossierTypeMetadonnee;
 import com.ged.service.TypeDossierTypeMetadonneeService;
 
@@ -20,7 +19,7 @@ public class TypeDossierTypeMetadonneeController {
 	private TypeDossierTypeMetadonneeService metier;
 	
 	@RequestMapping( value = "/typeDossierTypeMetadonnees", method = RequestMethod.POST )
-    public TypeDossierTypeMetadonneeDTO SaveDocument( @RequestBody TypeDossierTypeMetadonneeDTO t ) {
+    public TypeDossierTypeMetadonnee SaveDocument( @RequestBody TypeDossierTypeMetadonnee t ) {
     	
         return metier.saveTypeDossierTypeMetadonnee(t);
     }
@@ -32,7 +31,7 @@ public class TypeDossierTypeMetadonneeController {
     }
 	
 	@RequestMapping( value = "/typeDossierTypeMetadonnees", method = RequestMethod.GET )
-    public List<TypeDossierTypeMetadonneeDTO> getTypeDossierTypeMetadonnee() {
+    public List<TypeDossierTypeMetadonnee> getTypeDossierTypeMetadonnee() {
     	
         return metier.getAllTypeDossierTypeMetadonnee();
     }

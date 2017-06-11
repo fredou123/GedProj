@@ -1,8 +1,6 @@
 package com.ged.service.implementation;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ged.dao.TypeDocumentRepository;
-import com.ged.dto.TypeDocumentDTO;
-import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
-import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.entities.TypeDocument;
 import com.ged.entities.TypeDocumentTypeMetadonnee;
 import com.ged.entities.TypeDossierTypeDocument;
-import com.ged.service.DtoService;
 import com.ged.service.TypeDocumentService;
 import com.ged.service.TypeDocumentTypeMetadonneeService;
 import com.ged.service.TypeDossierTypeDocumentService;
@@ -33,62 +27,28 @@ public class TypeDocumentServiceImpl implements TypeDocumentService{
 	@Autowired
 	private TypeDossierTypeDocumentService metier2;
 	
-	@Autowired
-	private DtoService dto;
-
 	@Override
 	public TypeDocument getTypeDocument(Long id) {
 		return repository.findOne(id);
 	}
-
-	@Override
-	@Transactional
-	public TypeDocumentDTO saveTypeDocument(TypeDocumentDTO typeDocumentDto) {
-		TypeDocument d = dto.transformTypeDocumentDTO(typeDocumentDto);
-		d.setDate_creation(new Date());
-		d.setDate_last_modification(new Date());
-		TypeDocument dBase = repository.save(d);
-		if (dBase.getTypeDocumentTypeMetadonnees()!= null){
-			for (TypeDocumentTypeMetadonnee t : dBase.getTypeDocumentTypeMetadonnees()){
-				t.setTypeDocument(dBase);
-				TypeDocumentTypeMetadonneeDTO m = new TypeDocumentTypeMetadonneeDTO(t);
-				metier1.saveTypeDocumentTypeMetadonnee(m);
-			}
-		}
-		if (d.getTypeDossierTypeDocuments()!= null){
-			for (TypeDossierTypeDocument t : d.getTypeDossierTypeDocuments()){
-				t.setTypeDocument(d);
-				TypeDossierTypeDocumentDTO m = new TypeDossierTypeDocumentDTO(t);
-				metier2.saveTypeDossierTypeDocument(m);
-			}
-		}
-		TypeDocumentDTO dDto = new TypeDocumentDTO(dBase);
-		
-		return dDto;
-	}
 	
 	@Override
-	public TypeDocumentDTO saveTypeDocument(TypeDocumentDTO typeDocumentDto, 
-			List<TypeDocumentTypeMetadonneeDTO> listDocMeta,
-			List<TypeDossierTypeDocumentDTO> listDosDoc){
+	@Transactional
+	public TypeDocument saveTypeDocument(TypeDocument typeDocument){
+			
+		typeDocument = repository.save(typeDocument);
 		
-	/*	TypeDocument d = dto.transformTypeDocumentDTO(typeDocumentDto);
-		d = repository.save(d);
-		TypeDocumentDTO tDto = new TypeDocumentDTO(d);
-		
-		for (TypeDocumentTypeMetadonneeDTO t : listDocMeta){
-			t.setTypeDocument(d.getId());
-			TypeDocumentTypeMetadonneeDTO m = metier1.saveTypeDocumentTypeMetadonnee(t);
-			tDto.getTypeDocumentTypeMetadonnees().add(m.getId());
+		for (TypeDocumentTypeMetadonnee t : typeDocument.getTypeDocumentTypeMetadonnees()){
+			t.setTypeDocument(typeDocument);
+			t = metier1.saveTypeDocumentTypeMetadonnee(t);
+			
 		}
-		for (TypeDossierTypeDocumentDTO t : listDosDoc){
-			t.setTypeDocument(d.getId());
-			TypeDossierTypeDocumentDTO m = metier2.saveTypeDossierTypeDocument(t);
-			tDto.getTypeDossierTypeDocuments().add(m.getId());
+		for(TypeDossierTypeDocument t : typeDocument.getTypeDossierTypeDocuments()){
+			t.setTypeDocument(typeDocument);
+			t = metier2.saveTypeDossierTypeDocument(t);
 		}
-		return tDto; */
 		
-		return typeDocumentDto;
+		return typeDocument;
 	}
 
 	@Override
@@ -107,18 +67,14 @@ public class TypeDocumentServiceImpl implements TypeDocumentService{
 				typeDocument.setTypeDossierTypeDocuments(null);
 			}
 		}
-		repository.delete(typeDocument);
-		return typeDocument;
+		 repository.delete(typeDocument);
+		 return typeDocument;
 	}
 
 	@Override
-	public List<TypeDocumentDTO> getAllTypeDocuments() {
-		Collection<TypeDocument> allDocuments =  repository.findAll();
-		List<TypeDocumentDTO> list = new ArrayList<TypeDocumentDTO>();
-		for (TypeDocument t : allDocuments){
-			list.add(new TypeDocumentDTO(t));
-		}
-		return list;
+	public List<TypeDocument> getAllTypeDocuments() {
+		return  repository.findAll();
+		
 	}
 
 	@Override
