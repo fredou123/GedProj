@@ -3,10 +3,13 @@ package com.ged.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -18,12 +21,14 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_user")
 	private Long id;
 	private String nom;
 	private String Prenom;
 	private String login;
 	private String mdp;
 	@ManyToMany
+	@JoinTable(name= "user_profil", joinColumns= @JoinColumn (name="id_user"), inverseJoinColumns = @JoinColumn(name="id_profil"))  
 	private Collection<Profil> profils;
 	@OneToMany
 	private Collection<HistoriqueConnexion> connexions;

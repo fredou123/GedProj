@@ -3,6 +3,7 @@ package com.ged.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Profil implements Serializable {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column(name = "id_profil")
     private Long                     id;
     private String                   nom;
     @ManyToMany( mappedBy = "profils" )
