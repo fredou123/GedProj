@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.ged.dao.TypeDossierTypeDocumentRepository;
 import com.ged.entities.TypeDossierTypeDocument;
-import com.ged.service.TypeDocumentService;
-import com.ged.service.TypeDossierService;
 import com.ged.service.TypeDossierTypeDocumentService;
 
 @Service
@@ -17,10 +15,6 @@ public class TypeDossierTypeDocumentServiceImpl implements TypeDossierTypeDocume
 	
 	@Autowired
 	private TypeDossierTypeDocumentRepository repository;
-	@Autowired
-	private TypeDocumentService doc;
-	@Autowired
-	private TypeDossierService dos;
 
 	@Override
 	public TypeDossierTypeDocument saveTypeDossierTypeDocument(

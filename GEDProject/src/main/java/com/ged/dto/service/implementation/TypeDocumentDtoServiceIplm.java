@@ -21,6 +21,7 @@ import com.ged.service.TypeDossierService;
 import com.ged.service.TypeMetadonneeService;
 
 @Service
+@Transactional
 public class TypeDocumentDtoServiceIplm implements TypeDocumentDtoService {
 	
 	@Autowired
@@ -31,7 +32,6 @@ public class TypeDocumentDtoServiceIplm implements TypeDocumentDtoService {
 	private TypeDossierService metierDos;
 
 	@Override
-	@Transactional
 	public TypeDocumentPostDTO saveTypeDocument(TypeDocumentPostDTO typeDocumentPostDto){
 		
 		TypeDocument d = new TypeDocument();
@@ -68,7 +68,6 @@ public class TypeDocumentDtoServiceIplm implements TypeDocumentDtoService {
 	}
 
 	@Override
-	@Transactional
 	public List<TypeDocumentDTO> getAllTypeDocuments() {
 		Collection<TypeDocument> allDocuments =  metier.getAllTypeDocuments();
 		List<TypeDocumentDTO> list = new ArrayList<TypeDocumentDTO>();

@@ -11,36 +11,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ged.entities.TypeDossier;
-import com.ged.service.TypeDossierService;
+import com.ged.dto.TypeDossierDTO;
+import com.ged.dto.TypeDossierPostDTO;
+import com.ged.dto.service.TypeDossierDtoService;
 
 @RestController
 public class TypeDossierController {
 	
 	@Autowired
-	private TypeDossierService metier;
+	private TypeDossierDtoService metier;
 	
 	@RequestMapping( value = "/typeDossiers", method = RequestMethod.POST )
-    public TypeDossier saveTypeDossier( @RequestBody TypeDossier td ) {
+    public TypeDossierPostDTO saveTypeDossier( @RequestBody TypeDossierPostDTO td ) {
 		
         return metier.saveTypeDossier(td);
     }
 	
 	@RequestMapping( value = "/typeDossiers/{id}", method = RequestMethod.GET )
-    public TypeDossier getTypeDossier( @PathVariable Long id ) {
+    public TypeDossierDTO getTypeDossier( @PathVariable Long id ) {
     	
         return metier.getTypeDossier( id );
     }
 	
 	
 	@RequestMapping( value = "/typeDossiers", method = RequestMethod.DELETE )
-    public TypeDossier deleteTypeDossier( @RequestBody TypeDossier typeDossier ) {
+    public TypeDossierDTO deleteTypeDossier( @RequestBody TypeDossierDTO typeDossier ) {
     
          return metier.deleteTypeDossier(typeDossier);
     }
 	
 	@RequestMapping( value = "/typeDossiers", method = RequestMethod.GET )
-    public List<TypeDossier>  getAllTypeDossier( ) {	
+    public List<TypeDossierDTO>  getAllTypeDossier( ) {	
 		
         return  metier.getAllTypeDossiers();
     }
@@ -51,12 +52,12 @@ public class TypeDossierController {
 	}
 	
 	@RequestMapping( value = "/typeDossiers/all", method = RequestMethod.DELETE )
-    public void deleteSelectedTypeDossier(@RequestBody Collection<TypeDossier> c) {
+    public void deleteSelectedTypeDossier(@RequestBody Collection<TypeDossierDTO> c) {
 		metier.deleteSelectedTypeDossier(c);
     }
 	
 	@RequestMapping( value = "/typeDossiers/ids", method = RequestMethod.GET )
-	public Collection<TypeDossier> getListTypeDossierById(@RequestBody Collection<Long> ids){
+	public Collection<TypeDossierDTO> getListTypeDossierById(@RequestBody Collection<Long> ids){
 		return metier.getListTypeDossierById(ids);
 	}
 

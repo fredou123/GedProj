@@ -1,6 +1,5 @@
 package com.ged.service.implementation;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -9,32 +8,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ged.dao.TypeMetadonneeRepository;
-import com.ged.dto.TypeMetadonneeDTO;
 import com.ged.entities.TypeMetadonnee;
-import com.ged.service.DtoService;
 import com.ged.service.TypeMetadonneeService;
 
 @Service
+@Transactional
 public class TypeMetadonneeServiceImpl implements TypeMetadonneeService {
 	
 	@Autowired
 	private TypeMetadonneeRepository repository;
-	
-	private DtoService dto;
 
 	@Override
 	public TypeMetadonnee getTypeMetadonnee(Long id) {
 		 return repository.findOne(id);
-		
 	}
-
+	
 	@Override
-	public TypeMetadonneeDTO saveTypeMetadonnee(TypeMetadonneeDTO typeMetadonneeDto) {
-		 dto.transformTypeMetadonneeDTO(typeMetadonneeDto);
-		 
-		  repository.save(dto.transformTypeMetadonneeDTO(typeMetadonneeDto));
-		  return typeMetadonneeDto;
-		
+	public TypeMetadonnee saveTypeMetadonnee(TypeMetadonnee d) {
+		return repository.save(d);
 	}
 
 	@Override
@@ -44,13 +35,8 @@ public class TypeMetadonneeServiceImpl implements TypeMetadonneeService {
 	}
 
 	@Override
-	public List<TypeMetadonneeDTO> getAllTypeMetadonnees() {		
-		Collection<TypeMetadonnee> allMetadonnees = repository.findAll();
-		List<TypeMetadonneeDTO> list = new ArrayList<TypeMetadonneeDTO>();
-		for (TypeMetadonnee t : allMetadonnees){
-			list.add(new TypeMetadonneeDTO(t));
-		}
-		return list;
+	public List<TypeMetadonnee> getAllTypeMetadonnees() {		
+		return repository.findAll();
 	}
 
 	@Override
@@ -71,5 +57,6 @@ public class TypeMetadonneeServiceImpl implements TypeMetadonneeService {
 		
 		return repository.findAll(ids);
 	}
+
 
 }

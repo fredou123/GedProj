@@ -16,6 +16,7 @@ import com.ged.service.TypeDossierTypeDocumentService;
 import com.ged.service.TypeDossierTypeMetadonneeService;
 
 @Service
+@Transactional
 public class TypeDossierServiceImpl implements TypeDossierService {
 
 	@Autowired

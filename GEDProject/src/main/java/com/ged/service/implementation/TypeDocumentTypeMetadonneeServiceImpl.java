@@ -8,19 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.ged.dao.TypeDocumentTypeMetadonneeRepository;
 import com.ged.entities.TypeDocumentTypeMetadonnee;
-import com.ged.service.TypeDocumentService;
 import com.ged.service.TypeDocumentTypeMetadonneeService;
-import com.ged.service.TypeMetadonneeService;
 
 @Service
 public class TypeDocumentTypeMetadonneeServiceImpl implements TypeDocumentTypeMetadonneeService{
 	
 	@Autowired
 	private TypeDocumentTypeMetadonneeRepository repository;
-	@Autowired
-	private TypeDocumentService doc;
-	@Autowired
-	private TypeMetadonneeService meta;
 
 	@Override
 	public TypeDocumentTypeMetadonnee saveTypeDocumentTypeMetadonnee(

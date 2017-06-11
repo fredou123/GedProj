@@ -12,30 +12,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeMetadonneeDTO;
-import com.ged.entities.TypeMetadonnee;
-import com.ged.service.TypeMetadonneeService;
+import com.ged.dto.TypeMetadonneePostDTO;
+import com.ged.dto.service.TypeMetadonneeDtoService;
 
 @RestController
 public class TypeMetadonneeController {
 	
 	@Autowired
-	private TypeMetadonneeService metier;
+	private TypeMetadonneeDtoService metier;
 	
 	@RequestMapping( value = "/typeMetadonnees", method = RequestMethod.POST )
-    public TypeMetadonneeDTO saveTypeMetadonnee( @RequestBody TypeMetadonneeDTO tm ) {
+    public TypeMetadonneePostDTO saveTypeMetadonnee( @RequestBody TypeMetadonneePostDTO tm ) {
     	
         return metier.saveTypeMetadonnee( tm );
     }
 	
 	@RequestMapping( value = "/typeMetadonnees/{id}", method = RequestMethod.GET )
-    public TypeMetadonnee getTypeMetadonnee( @PathVariable Long id ) {
+    public TypeMetadonneeDTO getTypeMetadonnee( @PathVariable Long id ) {
     	
         return metier.getTypeMetadonnee( id );
     }
 	
 	
 	@RequestMapping( value = "/typeMetadonnees", method = RequestMethod.DELETE )
-    public TypeMetadonnee deleteTypeMetadonnee( @RequestBody TypeMetadonnee typeMetadonnee ) {
+    public TypeMetadonneeDTO deleteTypeMetadonnee( @RequestBody TypeMetadonneeDTO typeMetadonnee ) {
     
          return metier.deleteTypeMetadonnee(typeMetadonnee);
     }
@@ -52,12 +52,12 @@ public class TypeMetadonneeController {
 	}
 	
 	@RequestMapping( value = "/typeMetadonnees/all", method = RequestMethod.DELETE )
-    public void deleteSelectedTypeMetadonnee(@RequestBody Collection<TypeMetadonnee> c) {
+    public void deleteSelectedTypeMetadonnee(@RequestBody Collection<TypeMetadonneeDTO> c) {
 		metier.deleteSelectedTypeMetadonnee(c);
     }
 	
 	@RequestMapping( value = "/typeMetadonnees/ids", method = RequestMethod.GET )
-	public Collection<TypeMetadonnee> getListTypeMetadonneeById(@RequestBody Collection<Long> ids){
+	public Collection<TypeMetadonneeDTO> getListTypeMetadonneeById(@RequestBody Collection<Long> ids){
 		return metier.getListTypeMetadonneeById(ids);
 	}
 	

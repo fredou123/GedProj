@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ged.dao.TypeDossierTypeMetadonneeRepository;
 import com.ged.entities.TypeDossierTypeMetadonnee;
 import com.ged.service.TypeDossierTypeMetadonneeService;
 
 @Service
+@Transactional
 public class TypeDossierTypeMetadonneeServiceImpl implements TypeDossierTypeMetadonneeService{
 	
 	@Autowired
