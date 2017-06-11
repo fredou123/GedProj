@@ -3,6 +3,7 @@ package com.ged.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class DocumentController {
         return documentMetier.getDocument( id );
     }
     
+    //@Secured("ROLE_USER")
     @RequestMapping( value = "/documents", method = RequestMethod.GET )
     public Collection<Document> getAllDocument( ) {
     	

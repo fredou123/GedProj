@@ -6,5 +6,5 @@ import com.ged.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	public User getUserByLogin(String login);
+	public User findByLogin(String login);
 }

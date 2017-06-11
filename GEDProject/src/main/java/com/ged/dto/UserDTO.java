@@ -1,12 +1,14 @@
 package com.ged.dto;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class UserDTO implements UserDetails{
+import com.ged.entities.User;
 
+public class UserDTO implements UserDetails{
 	
 	/**
 	 * 
@@ -14,7 +16,7 @@ public class UserDTO implements UserDetails{
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String nom;
-	private String Prenom;
+	private String prenom;
 	private String login;
 	private String mdp;
 	
@@ -29,6 +31,22 @@ public class UserDTO implements UserDetails{
 	private boolean enabled;
 	
 	
+	public UserDTO(User user) {
+		this.accountNonExpired = user.isAccountNonExpired();
+		this.authorities = user.getProfils().stream().map(profil -> {
+			return new ProfilDTO(profil);
+		}).collect(Collectors.toList());
+		this.accountNonLocked = user.isAccountNonLocked();
+		this.credentialsNonExpired = user.isCredentialsNonExpired();
+		this.enabled = user.isEnabled();
+		this.login = user.getLogin();
+		this.nom = user.getNom();
+		this.prenom = user.getPrenom();
+		this.mdp = user.getMdp();
+		this.id = user.getId();
+		
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
@@ -81,11 +99,11 @@ public class UserDTO implements UserDetails{
 	}
 
 	public String getPrenom() {
-		return Prenom;
+		return prenom;
 	}
 
 	public void setPrenom(String prenom) {
-		Prenom = prenom;
+		this.prenom = prenom;
 	}
 
 	public void setLogin(String login) {
