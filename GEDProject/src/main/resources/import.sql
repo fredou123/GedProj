@@ -1,7 +1,7 @@
 
-INSERT INTO `gedbdd`.`profil` (`id_profil`, `nom`) VALUES (1,"USER");
-INSERT INTO `gedbdd`.`profil` (`id_profil`, `nom`) VALUES (2,"ADMIN");
-INSERT INTO `gedbdd`.`profil` (`id_profil`, `nom`) VALUES (3,"STAFF");
+INSERT INTO `gedbdd`.`profil` (`id_profil`, `nom`) VALUES (1,"ROLE_USER");
+INSERT INTO `gedbdd`.`profil` (`id_profil`, `nom`) VALUES (2,"ROLE_ADMIN");
+INSERT INTO `gedbdd`.`profil` (`id_profil`, `nom`) VALUES (3,"ROLE_STAFF");
 
 
 INSERT INTO `gedbdd`.`user` (`id_user`,`prenom`,`login`,`mdp`,`nom`, `account_non_expired`, `account_non_locked`, `credentials_non_expired`, `enabled`) VALUES (1,"Franck","pichou","francky","TOUNGA",true, true, true, true);

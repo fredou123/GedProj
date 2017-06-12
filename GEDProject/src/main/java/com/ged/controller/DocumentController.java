@@ -32,7 +32,7 @@ public class DocumentController {
         return documentMetier.getDocument( id );
     }
     
-    //@Secured("ROLE_USER")
+    @Secured("ROLE_ADMIN")
     @RequestMapping( value = "/documents", method = RequestMethod.GET )
     public Collection<Document> getAllDocument( ) {
     	
