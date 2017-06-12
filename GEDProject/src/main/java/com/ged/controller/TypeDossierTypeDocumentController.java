@@ -11,14 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.dto.service.TypeDossierTypeDocumentDtoService;
-import com.ged.entities.TypeDossierTypeDocument;
-import com.ged.service.TypeDossierTypeDocumentService;
 
 @RestController
 public class TypeDossierTypeDocumentController {
 	
-	@Autowired
-	private TypeDossierTypeDocumentService metier;
 	@Autowired
 	private TypeDossierTypeDocumentDtoService dtoDosDoc;
 	
@@ -29,9 +25,9 @@ public class TypeDossierTypeDocumentController {
     }
 
 	@RequestMapping( value = "/typeDossierTypeDocuments/{id}", method = RequestMethod.GET )
-    public TypeDossierTypeDocument getTypeDossierTypeDocument( @PathVariable Long id ) {
+    public TypeDossierTypeDocumentDTO getTypeDossierTypeDocument( @PathVariable Long id ) {
     	
-        return metier.getTypeDossierTypeDocument(id);
+        return dtoDosDoc.getTypeDossierTypeDocument(id);
     }
 	
 	@RequestMapping( value = "/typeDossierTypeDocuments", method = RequestMethod.GET )
@@ -41,8 +37,14 @@ public class TypeDossierTypeDocumentController {
     }
 	
 	@RequestMapping( value = "/typeDossierTypeDocuments", method = RequestMethod.DELETE )
-	public TypeDossierTypeDocument deleteTypeDossierTypeDocument(TypeDossierTypeDocument t){
-		return metier.deleteTypeDossierTypeDocument(t);
+	public TypeDossierTypeDocumentDTO deleteTypeDossierTypeDocument(TypeDossierTypeDocumentDTO t){
+		return dtoDosDoc.deleteTypeDossierTypeDocument(t);
 	}
+	
+	@RequestMapping( value = "/typeDossierTypeDocuments/ids", method = RequestMethod.GET )
+    public List<TypeDossierTypeDocumentDTO> getListById( @RequestBody List<Long> ids ) {
+    	
+        return dtoDosDoc.getListById(ids);
+    }
 
 }

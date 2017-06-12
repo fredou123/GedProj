@@ -1,6 +1,7 @@
 package com.ged.dto.service.implementation;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,33 @@ public class TypeDossierTypeMetadonneeDtoServiceImpl implements TypeDossierTypeM
 			list.add(m);
 		}
 		return list;
+	}
+
+	@Override
+	public TypeDossierTypeMetadonneeDTO getTypeDossierTypeMetadonnee(Long id) {
+		
+		TypeDossierTypeMetadonnee d = metier.getTypeDossierTypeMetadonnee(id);
+		TypeDossierTypeMetadonneeDTO mDto = new TypeDossierTypeMetadonneeDTO(d);
+		
+		return mDto;
+	}
+
+	@Override
+	public List<TypeDossierTypeMetadonneeDTO> getListById(Collection<Long> ids) {
+		List<TypeDossierTypeMetadonneeDTO> cDto = new ArrayList<TypeDossierTypeMetadonneeDTO>();
+		for (TypeDossierTypeMetadonnee t : metier.getListByIds(ids)){
+			TypeDossierTypeMetadonneeDTO m = new TypeDossierTypeMetadonneeDTO(t);
+			cDto.add(m);
+		}
+		return cDto;
+	}
+
+	@Override
+	public TypeDossierTypeMetadonneeDTO deleteTypeDossierTypeMetadonnee(
+			TypeDossierTypeMetadonneeDTO t) {
+		TypeDossierTypeMetadonnee d =  metier.deleteTypeDossierTypeMetadonnee(metier.getTypeDossierTypeMetadonnee(t.getId()));
+		TypeDossierTypeMetadonneeDTO m = new TypeDossierTypeMetadonneeDTO(d);
+		return m;
 	}
 
 }

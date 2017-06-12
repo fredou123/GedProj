@@ -1,5 +1,7 @@
 package com.ged.dto.service.implementation;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +40,40 @@ public class TypeDossierTypeDocumentDtoServiceImpl implements TypeDossierTypeDoc
 
 	@Override
 	public List<TypeDossierTypeDocumentDTO> getAllTypeDossierTypeDocument() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<TypeDossierTypeDocumentDTO> list = new ArrayList<TypeDossierTypeDocumentDTO>();
+		for (TypeDossierTypeDocument t : metierDosDoc.getAllTypeDossierTypeDocument()){
+			TypeDossierTypeDocumentDTO m = new TypeDossierTypeDocumentDTO(t);
+			list.add(m);
+		}
+		return list;
+	}
+
+	@Override
+	public TypeDossierTypeDocumentDTO getTypeDossierTypeDocument(Long id) {
+		
+		TypeDossierTypeDocument d = metierDosDoc.getTypeDossierTypeDocument(id);
+		TypeDossierTypeDocumentDTO mDto = new TypeDossierTypeDocumentDTO(d);
+		
+		return mDto;
+	}
+
+	@Override
+	public List<TypeDossierTypeDocumentDTO> getListById(Collection<Long> ids) {
+		List<TypeDossierTypeDocumentDTO> cDto = new ArrayList<TypeDossierTypeDocumentDTO>();
+		for (TypeDossierTypeDocument t : metierDosDoc.getByIds(ids)){
+			TypeDossierTypeDocumentDTO m = new TypeDossierTypeDocumentDTO(t);
+			cDto.add(m);
+		}
+		return cDto;
+	}
+
+	@Override
+	public TypeDossierTypeDocumentDTO deleteTypeDossierTypeDocument(
+			TypeDossierTypeDocumentDTO t) {
+		TypeDossierTypeDocument d =  metierDosDoc.deleteTypeDossierTypeDocument(metierDosDoc.getTypeDossierTypeDocument(t.getId()));
+		TypeDossierTypeDocumentDTO m = new TypeDossierTypeDocumentDTO(d);
+		return m;
 	}
 
 }

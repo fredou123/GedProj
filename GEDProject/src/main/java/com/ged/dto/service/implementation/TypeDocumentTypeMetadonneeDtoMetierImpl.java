@@ -1,6 +1,7 @@
 package com.ged.dto.service.implementation;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,32 @@ public class TypeDocumentTypeMetadonneeDtoMetierImpl implements TypeDocumentType
 			list.add(m);
 		}
 		return list;
+	}
+
+	@Override
+	public TypeDocumentTypeMetadonneeDTO getTypeDocumentTypeMetadonnee(Long id) {
+		TypeDocumentTypeMetadonnee d = metierDocMeta.getTypeDocumentTypeMetadonnee(id);
+		TypeDocumentTypeMetadonneeDTO mDto = new TypeDocumentTypeMetadonneeDTO(d);
+		
+		return mDto;
+	}
+
+	@Override
+	public List<TypeDocumentTypeMetadonneeDTO> getListById(Collection<Long> ids) {
+		List<TypeDocumentTypeMetadonneeDTO> cDto = new ArrayList<TypeDocumentTypeMetadonneeDTO>();
+		for (TypeDocumentTypeMetadonnee t : metierDocMeta.getListById(ids)){
+			TypeDocumentTypeMetadonneeDTO m = new TypeDocumentTypeMetadonneeDTO(t);
+			cDto.add(m);
+		}
+		return cDto;
+	}
+
+	@Override
+	public TypeDocumentTypeMetadonneeDTO deleteTypeDocumentTypeMetadonnee(
+			TypeDocumentTypeMetadonneeDTO t) {
+		TypeDocumentTypeMetadonnee d =  metierDocMeta.deleteTypeDocumentTypeMetadonnee(metierDocMeta.getTypeDocumentTypeMetadonnee(t.getId()));
+		TypeDocumentTypeMetadonneeDTO m = new TypeDocumentTypeMetadonneeDTO(d);
+		return m;
 	}
 
 }
