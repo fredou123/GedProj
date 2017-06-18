@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ged.dao.TypeDossierRepository;
 import com.ged.dto.TypeDossierDTO;
 import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.dto.TypeDossierTypeMetadonneeDTO;
@@ -20,6 +19,7 @@ import com.ged.metier.DtoMetier;
 import com.ged.metier.TypeDossierMetier;
 import com.ged.metier.TypeDossierTypeDocumentMetier;
 import com.ged.metier.TypeDossierTypeMetadonneeMetier;
+import com.ged.repository.TypeDossierRepository;
 
 @Service
 public class TypeDossierMetierImpl implements TypeDossierMetier {

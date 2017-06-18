@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ged.dao.TypeMetadonneeRepository;
 import com.ged.dto.TypeMetadonneeDTO;
 import com.ged.entities.TypeMetadonnee;
 import com.ged.metier.DtoMetier;
 import com.ged.metier.TypeMetadonneeMetier;
+import com.ged.repository.TypeMetadonneeRepository;
 
 @Service
 public class TypeMetadonneeMetierImpl implements TypeMetadonneeMetier {

@@ -45,7 +45,13 @@ public class UserDTO implements UserDetails{
 		this.mdp = user.getMdp();
 		this.id = user.getId();
 		
+	}	
+
+	public UserDTO() {
+		super();
 	}
+
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

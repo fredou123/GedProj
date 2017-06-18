@@ -1,7 +1,9 @@
 package com.ged.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-
-import org.springframework.security.core.GrantedAuthority;
+import com.ged.dto.UserDTO;
 
 @SuppressWarnings("serial")
 @Entity
@@ -141,7 +142,8 @@ public class User implements Serializable {
 	}
 
 	public User() {
-
+		this.profils = new ArrayList<>();
+		this.groupes = new ArrayList<>();
+		this.connexions = new ArrayList<>();
 	}
-
 }

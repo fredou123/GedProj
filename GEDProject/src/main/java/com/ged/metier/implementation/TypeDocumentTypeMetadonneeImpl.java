@@ -7,12 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ged.dao.TypeDocumentTypeMetadonneeRepository;
 import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
 import com.ged.entities.TypeDocumentTypeMetadonnee;
 import com.ged.metier.TypeDocumentMetier;
 import com.ged.metier.TypeDocumentTypeMetadonneeMetier;
 import com.ged.metier.TypeMetadonneeMetier;
+import com.ged.repository.TypeDocumentTypeMetadonneeRepository;
 
 @Service
 public class TypeDocumentTypeMetadonneeImpl implements TypeDocumentTypeMetadonneeMetier{

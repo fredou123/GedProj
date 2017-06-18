@@ -7,12 +7,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ged.dao.TypeDossierTypeDocumentRepository;
 import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.entities.TypeDossierTypeDocument;
 import com.ged.metier.TypeDocumentMetier;
 import com.ged.metier.TypeDossierMetier;
 import com.ged.metier.TypeDossierTypeDocumentMetier;
+import com.ged.repository.TypeDossierTypeDocumentRepository;
 
 @Service
 public class TypeDossierTypeDocumentImpl implements TypeDossierTypeDocumentMetier{

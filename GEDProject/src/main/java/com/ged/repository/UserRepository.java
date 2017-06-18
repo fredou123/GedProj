@@ -1,4 +1,4 @@
-package com.ged.dao;
+package com.ged.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

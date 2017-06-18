@@ -1,6 +1,7 @@
 package com.ged.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import org.springframework.security.core.GrantedAuthority;
 
 @SuppressWarnings("serial")
 @Entity
@@ -61,9 +64,17 @@ public class Profil implements Serializable {
     public void setUsers( Collection<User> users ) {
         this.users = users;
     }
+    
+    
 
     public Profil() {
-        // TODO Auto-generated constructor stub
+		super();
+	}
+
+	public Profil(GrantedAuthority p) {
+    	this.nom = p.getAuthority();
+    	this.users = new ArrayList<>();
     }
+
 
 }
