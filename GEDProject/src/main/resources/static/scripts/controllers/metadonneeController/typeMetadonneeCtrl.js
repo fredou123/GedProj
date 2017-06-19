@@ -10,7 +10,6 @@ angular.module('controllerMetadonnee', ["viewService","viewDossierService","ui.b
     $http.get("/typeMetadonnees")
         .success(function(response){ 
             $scope.users = response;
-            console.log($scope.users)
             })  
         .error(function(response){
             console.log("erreur");
@@ -68,8 +67,28 @@ angular.module('controllerMetadonnee', ["viewService","viewDossierService","ui.b
     $scope.viewData = function(data){
         ViewDossierService.user = data;
     }
+    
+    $scope.typeDocs = [];
+    $http.get("/typeDocuments")
+    .success(function(response){ 
+        $scope.typeDocs = response;
+        })  
+    .error(function(response){
+        console.log("erreur++");
+    });
+    
+    $scope.typeDos = [];
+    $http.get("/typeDossiers")
+    .success(function(response){ 
+        $scope.typeDos = response;
+        })  
+    .error(function(response){
+        console.log("erreur++");
+    });
 
     $scope.new_data = function(){
+    	ViewService.typeDocs = $scope.typeDocs;
+    	ViewService.typeDos = $scope.typeDos;
         $window.location.href = '#/newTypeMetadonnee';
     }
 

@@ -11,6 +11,7 @@
             </li>          
           </ul>
           </center>
+     <!-- ++++++++++++++++++++++++++++++ TypeMetadonnéé ++++++++++++++++++++++++++++++++++++++++ -->
           <center>
             <div><button class="" ng-click="vue()">Ajouter un type de metadonnée</button></div>
             <div ng-if="vueIf">
@@ -36,7 +37,7 @@
                        <option ng-selected="false">Non</option>
                     </select>
                   </td>
-                  <td><center><a href="" ng-click="ajouter(typeDocumentTypeMetadonnee,typeMetadonnee)"><span>Ajouter</span></a></center></td>
+                  <td><center><a href="" ng-click="ajouter(typeDocumentTypeMetadonnee,typeMetadonnee.id,typeMetadonnee.nom)"><span>Ajouter</span></a></center></td>
                 </tr>
 
         </table>
@@ -53,7 +54,7 @@
                 <th><center>Supprimer</center></th>
           
                 <tr ng-repeat="t in typeDocumentTypeMetadonnees">              
-                  <td><center>{{t.typeMetadonnee.nom}}</center></td>
+                  <td><center>{{t.nom}}</center></td>
                   <td><center>{{t.regex}}</td>
                   <td><center>{{t.defaultValue}}</center></td>
                   <td ng-show="{{t.isObligatoire}}"><center>Oui</center></td>
@@ -63,6 +64,55 @@
 
         </table>
         </div>
+        
+        <!-- +++++++++++++++++++++++++++ Type Dossier    ++++++++++++++++++++++++++++++-->
+
+              <center>
+            <div><button class="" ng-click="vue1()">Ajouter un type de Dossier</button></div>
+            <div ng-if="vueIf1">
+            <div >Nom du dossier: <select ng-init="" ng-model="typeDossier" ng-options="typeD.nom for typeD in typeDos" placeholder="type" ng-click="" >
+                  </select>
+            </div>
+            <table class="table table-bordered table-striped table-condensed" ng-if="typeDossier.nom">    
+                <caption><center>Dossier</center><caption>
+
+                <th><center>Type dossier</center></th>
+                <th><center>Obligatoire?</center></th>
+                <th><center>Supprimer</center></th>
+          
+                <tr>              
+                  <td><center>{{typeDossier.nom}}</center></td>
+                  <td>
+                    <select ng-model="typeDossierTypeDocument.isObligatoire" class="form-control">
+                       <option ng-selected="true">Oui</option>
+                       <option ng-selected="false">Non</option>
+                    </select>
+                  </td>
+                  <td><center><a href="" ng-click="ajouterDos(typeDossierTypeDocument,typeDossier.id,typeDossier.nom)"><span>Ajouter</span></a></center></td>
+                </tr>
+
+        </table>
+        </div>
+        </center>
+        <div ng-if="typeDossierTypeDocuments.length">
+          <table class="table table-bordered table-striped table-condensed">    
+                <caption><center>Documents</center><caption>
+                 
+                <th><center>nom Type document</center></th>
+                <th><center>Obligatoire?</center></th>
+                <th><center>Supprimer</center></th>
+          
+                <tr ng-repeat="t in typeDossierTypeDocuments">              
+                  <td><center>{{t.nom}}</center></td>
+                  <td ng-show="{{t.isObligatoire}}"><center>Oui</center></td>
+                  <td ng-show="{{!t.isObligatoire}}"><center>Non</center></td>
+                  <td><center><a href=""><span>Supprimer</span></a></center></td>
+                </tr>
+
+        </table>
+        </div>
+        
+        <!-- ++++++++++++++++++++++++++++++++++++++++Enregistreemnt ++++++++++++++++++++++++++++++++++ -->
         </div>
             <div class="">
             <button class="btn btn-primary" type="button" ng-click="save(nom)">Enregistrer</button>

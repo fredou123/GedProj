@@ -35,11 +35,15 @@ public class TypeDocumentDTO {
 		super();
 		this.id = typeDocument.getId();
 		this.nom = typeDocument.getNom();
+		if(typeDocument.getTypeDocumentTypeMetadonnees()!=null){
 		for (TypeDocumentTypeMetadonnee t : typeDocument.getTypeDocumentTypeMetadonnees()){
 			this.typeDocumentTypeMetadonnees.add(t.getId());
 		}
+		}
+		if(typeDocument.getTypeDossierTypeDocuments()!=null){
 		for(TypeDossierTypeDocument t : typeDocument.getTypeDossierTypeDocuments()){
 			this.typeDossierTypeDocuments.add(t.getId());
+		}
 		}
 		this.date_creation = typeDocument.getDate_creation();
 		this.date_last_modification = typeDocument.getDate_last_modification();

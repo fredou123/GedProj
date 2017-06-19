@@ -57,14 +57,14 @@ public class TypeDossierServiceImpl implements TypeDossierService {
 		if (typeDossier.getTypeDossierTypeDocuments()!= null){
 			for (TypeDossierTypeDocument t : typeDossier.getTypeDossierTypeDocuments()){
 				metier2.deleteTypeDossierTypeDocument(t);
-				typeDossier.setTypeDossierTypeDocuments(null);}
+				}
+			typeDossier.setTypeDossierTypeDocuments(null);
 		}
 		if (typeDossier.getTypeDossierTypeMetadonnees()!= null){
 			for (TypeDossierTypeMetadonnee t : typeDossier.getTypeDossierTypeMetadonnees()){
 				metier1.deleteTypeDossierTypeMetadonnee(t);
-				typeDossier.setTypeDossierTypeMetadonnees(null);
-				
 			}
+			typeDossier.setTypeDossierTypeMetadonnees(null);
 		}
 		repository.delete(typeDossier);
 		return typeDossier;

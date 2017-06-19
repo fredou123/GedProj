@@ -32,11 +32,15 @@ public class TypeDossierDTO {
 	public TypeDossierDTO(TypeDossier typeDossier) {
 		this.id = typeDossier.getId();
 		this.nom =typeDossier.getNom();
+		if(typeDossier.getTypeDossierTypeMetadonnees()!=null){
 		for (TypeDossierTypeMetadonnee t : typeDossier.getTypeDossierTypeMetadonnees()){
 			this.typeDossierTypeMetadonnees.add(t.getId());
 		}
+		}
+		if(typeDossier.getTypeDossierTypeDocuments()!=null){
 		for(TypeDossierTypeDocument t : typeDossier.getTypeDossierTypeDocuments()){
 			this.typeDossierTypeDocuments.add(t.getId());
+		}
 		}
 		
 		this.date_creation = typeDossier.getDate_creation();

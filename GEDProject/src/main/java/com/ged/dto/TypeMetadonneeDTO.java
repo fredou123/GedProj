@@ -34,11 +34,15 @@ public class TypeMetadonneeDTO {
 			this.id = typeMetadonnee.getId();
 			this.nom = typeMetadonnee.getNom();
 			
+			if (typeMetadonnee.getTypeDocumentTypeMetadonnees()!=null){
 			for (TypeDocumentTypeMetadonnee t : typeMetadonnee.getTypeDocumentTypeMetadonnees()){
 				this.typeDocumentTypeMetadonnees.add(t.getId());
 			}
+			}
+			if(typeMetadonnee.getTypeDossierTypeMetadonnees()!=null){
 			for(TypeDossierTypeMetadonnee t : typeMetadonnee.getTypeDossierTypeMetadonnees()){
 				this.typeDossierTypeMetadonnees.add(t.getId());
+			}
 			}
 			
 			this.date_creation = typeMetadonnee.getDate_creation();

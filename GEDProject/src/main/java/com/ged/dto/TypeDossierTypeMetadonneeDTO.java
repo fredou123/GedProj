@@ -11,8 +11,8 @@ public class TypeDossierTypeMetadonneeDTO {
 	private Boolean isObligatoire;
 	private String regex;
 	private String defaultValue;
-	private Long typeMetadonnee = 0L;
-	private Long typeDossier = 0L;
+	private Long typeMetadonnee ;
+	private Long typeDossier ;
 	
 	
 	public TypeDossierTypeMetadonneeDTO() {

@@ -13,7 +13,6 @@ import com.ged.dto.TypeDossierTypeMetadonneeDTO;
 import com.ged.dto.TypeMetadonneeDTO;
 import com.ged.dto.TypeMetadonneePostDTO;
 import com.ged.dto.service.TypeMetadonneeDtoService;
-
 import com.ged.entities.TypeDocumentTypeMetadonnee;
 import com.ged.entities.TypeDossierTypeMetadonnee;
 import com.ged.entities.TypeMetadonnee;
@@ -35,7 +34,8 @@ public class TypeMetadonneeDtoServiceImpl implements TypeMetadonneeDtoService{
 	@Override
 	public TypeMetadonneeDTO getTypeMetadonnee(Long id) {
 		
-		return null;
+		TypeMetadonneeDTO tDto = new TypeMetadonneeDTO(metier.getTypeMetadonnee(id));
+		return tDto;
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class TypeMetadonneeDtoServiceImpl implements TypeMetadonneeDtoService{
 			m.setDefaultValue(t.getDefaultValue());
 			m.setIsObligatoire(t.getIsObligatoire());
 			m.setRegex(t.getRegex());
-			m.setTypeMetadonnee(metier.getTypeMetadonnee(t.getTypeMetadonnee()));
+			m.setTypeDocument(metierDoc.getTypeDocument(t.getTypeDocument()));
 			c1.add(m);	
 		}
 		d.setTypeDocumentTypeMetadonnees(c1);

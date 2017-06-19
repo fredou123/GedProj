@@ -37,7 +37,7 @@
                        <option ng-selected="false">Non</option>
                     </select>
                   </td>
-                  <td><center><a href="" ng-click="ajouterMeta(typeDossierTypeMetadonnee,typeMetadonnee)"><span>Ajouter</span></a></center></td>
+                  <td><center><a href="" ng-click="ajouterMeta(typeDossierTypeMetadonnee,typeMetadonnee.id,typeMetadonnee.nom)"><span>Ajouter</span></a></center></td>
                 </tr>
 
         </table>
@@ -54,7 +54,7 @@
                 <th><center>Supprimer</center></th>
           
                 <tr ng-repeat="t in typeDossierTypeMetadonnees">              
-                  <td><center>{{t.typeMetadonnee.nom}}</center></td>
+                  <td><center>{{t.nom}}</center></td>
                   <td><center>{{t.regex}}</td>
                   <td><center>{{t.defaultValue}}</center></td>
                   <td ng-show="{{t.isObligatoire}}"><center>Oui</center></td>
@@ -87,7 +87,7 @@
                        <option ng-selected="false">Non</option>
                     </select>
                   </td>
-                  <td><center><a href="" ng-click="ajouterDoc(typeDossierTypeDocument,typeDocument)"><span>Ajouter</span></a></center></td>
+                  <td><center><a href="" ng-click="ajouterDoc(typeDossierTypeDocument,typeDocument.id,typeDocument.nom)"><span>Ajouter</span></a></center></td>
                 </tr>
 
         </table>
@@ -102,7 +102,7 @@
                 <th><center>Supprimer</center></th>
           
                 <tr ng-repeat="t in typeDossierTypeDocuments">              
-                  <td><center>{{t.typeDocument.nom}}</center></td>
+                  <td><center>{{t.nom}}</center></td>
                   <td ng-show="{{t.isObligatoire}}"><center>Oui</center></td>
                   <td ng-show="{{!t.isObligatoire}}"><center>Non</center></td>
                   <td><center><a href=""><span>Supprimer</span></a></center></td>

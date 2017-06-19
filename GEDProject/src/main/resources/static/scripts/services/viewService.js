@@ -41,6 +41,7 @@ angular.module('viewService', [])
 
 		this.typeMetas = [];
 		this.typeDocs = [];
+		this.typeDos = [];
 
 
     });

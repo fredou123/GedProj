@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ged.dao.TypeMetadonneeRepository;
+import com.ged.entities.TypeDocumentTypeMetadonnee;
+import com.ged.entities.TypeDossierTypeMetadonnee;
 import com.ged.entities.TypeMetadonnee;
+import com.ged.service.TypeDocumentTypeMetadonneeService;
+import com.ged.service.TypeDossierTypeMetadonneeService;
 import com.ged.service.TypeMetadonneeService;
 
 @Service
@@ -17,6 +21,10 @@ public class TypeMetadonneeServiceImpl implements TypeMetadonneeService {
 	
 	@Autowired
 	private TypeMetadonneeRepository repository;
+	@Autowired
+	private TypeDossierTypeMetadonneeService metierDos;
+	@Autowired
+	private TypeDocumentTypeMetadonneeService metierDoc;
 
 	@Override
 	public TypeMetadonnee getTypeMetadonnee(Long id) {
@@ -25,11 +33,36 @@ public class TypeMetadonneeServiceImpl implements TypeMetadonneeService {
 	
 	@Override
 	public TypeMetadonnee saveTypeMetadonnee(TypeMetadonnee d) {
-		return repository.save(d);
+		 repository.save(d);
+		
+		for (TypeDossierTypeMetadonnee t: d.getTypeDossierTypeMetadonnees()){
+			t.setTypeMetadonnee(d);
+			metierDos.saveTypeDossierTypeMetadonnee(t);
+		}
+		
+		for (TypeDocumentTypeMetadonnee t: d.getTypeDocumentTypeMetadonnees()){
+			t.setTypeMetadonnee(d);
+			metierDoc.saveTypeDocumentTypeMetadonnee(t);
+		}
+		
+		return d;
 	}
 
 	@Override
 	public TypeMetadonnee deleteTypeMetadonnee(TypeMetadonnee typeMetadonnee) {
+
+		if (typeMetadonnee.getTypeDossierTypeMetadonnees()!=null){
+		for (TypeDossierTypeMetadonnee t: typeMetadonnee.getTypeDossierTypeMetadonnees()){
+			metierDos.deleteTypeDossierTypeMetadonnee(t);
+		}
+		typeMetadonnee.setTypeDossierTypeMetadonnees(null);
+		}
+		if(typeMetadonnee.getTypeDocumentTypeMetadonnees()!=null){
+		for (TypeDocumentTypeMetadonnee t: typeMetadonnee.getTypeDocumentTypeMetadonnees()){
+			metierDoc.deleteTypeDocumentTypeMetadonnee(t);
+		}
+		typeMetadonnee.setTypeDocumentTypeMetadonnees(null);
+		}
 		 repository.delete(typeMetadonnee);
 		 return typeMetadonnee;
 	}

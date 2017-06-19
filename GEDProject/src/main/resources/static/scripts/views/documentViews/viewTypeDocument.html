@@ -1,12 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">
      <center>
-      <a href="#cloneDir/{{user.id}}/{{user.nom}}/{{user.statut}}/{{user.owner}}/{{user.user_modif}}/{{user.user_modif}}/{{user.user_modif}}/{{user.user_cre}}" class="btn btn-outline-secondary">
+      <a href="" class="btn btn-outline-secondary">
         <span class="glyphicon glyphicon-search"> </span>
         Cloner 
       </a>
-      <a href="#cloneDir/{{user.id}}/{{user.nom}}/{{user.statut}}/{{user.owner}}
-      /{{user.user_modif}}/{{user.user_modif}}/{{user.user_modif}}/{{user.user_modif}}" >
+      <a href="" >
         <span class="glyphicon glyphicon-pencil-link"> </span>
         Modifier
       </a>
@@ -78,8 +77,8 @@
             <th><center>Regex</center></th>
             <th><center>Default value</center></th>
                 
-          <tr ng-repeat="meta in listTypeM">              
-              <td><center>{{meta.typeMetadonnee}}</center></td>
+          <tr ng-repeat="meta in resultMeta">              
+              <td><center>{{meta.nom}}</center></td>
               <td><center>{{meta.isObligatoire}}</center></td>
               <td><center>{{meta.regex}}</center></td>
               <td><center>{{meta.defaultValue}}</center></td>              
@@ -105,8 +104,8 @@
             <th><center>Type Document</center></th>
             <th><center>Obligatoire</center></th>
             
-          <tr ng-repeat="dos in listTypeDossiers">              
-              <td><center>{{dos.typeDossier}}</center></td>
+          <tr ng-repeat="dos in resultDos">              
+              <td><center>{{dos.nom}}</center></td>
               <td><center>{{dos.isObligatoire}}</center></td>             
           </tr>
 

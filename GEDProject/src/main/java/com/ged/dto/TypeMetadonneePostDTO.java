@@ -40,6 +40,8 @@ public class TypeMetadonneePostDTO {
 		for(TypeDossierTypeMetadonnee t : typeMetadonnee.getTypeDossierTypeMetadonnees()){
 			TypeDossierTypeMetadonneeDTO tDto = new TypeDossierTypeMetadonneeDTO();
 			tDto.setId(t.getId());
+			tDto.setRegex(t.getRegex());
+			tDto.setDefaultValue(t.getDefaultValue());
 			tDto.setIsObligatoire(t.getIsObligatoire());
 			tDto.setTypeMetadonnee(t.getTypeMetadonnee().getId());
 			tDto.setTypeDossier(t.getTypeDossier().getId());

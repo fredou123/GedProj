@@ -74,11 +74,20 @@ angular.module('controllerTypeDocument', ["viewService","viewDossierService","ui
             })  
         .error(function(response){
             console.log("erreur++");
-        });
+    });
+    $scope.typeDos = [];
+        $http.get("/typeDossiers")
+        .success(function(response){ 
+            $scope.typeDos = response;
+            })  
+        .error(function(response){
+            console.log("erreur++");
+    });
 
     $scope.new_data = function(){
 
         ViewService.typeMetas = $scope.typeMetas;
+        ViewService.typeDos = $scope.typeDos;
         $window.location.href = '#/newTypeDocument';
     }
 

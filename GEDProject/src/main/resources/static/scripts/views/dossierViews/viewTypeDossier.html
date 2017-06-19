@@ -78,8 +78,8 @@
             <th><center>Regex</center></th>
             <th><center>Default value</center></th>
                 
-          <tr ng-repeat="meta in listTypeM">              
-              <td><center>{{meta.typeMetadonnee}}</center></td>
+          <tr ng-repeat="meta in resultMeta">              
+              <td><center>{{meta.nom}}</center></td>
               <td><center>{{meta.isObligatoire}}</center></td>
               <td><center>{{meta.regex}}</center></td>
               <td><center>{{meta.defaultValue}}</center></td>              
@@ -95,7 +95,7 @@
         <!-- ++++++++++++++++++++++++++++++++++ Documents ++++++++++++++++++++++++++++++++++++ -->
 
         <div class="col-md-6 -col-md-offset-6">
-           <ul class="list-group" ng-if="listTypeDoc.length">
+           <ul class="list-group" ng-if="listTypeDocDos.length">
       
       
       <li class="list-group-item list-group-item-info">
@@ -105,8 +105,8 @@
             <th><center>Type Document</center></th>
             <th><center>Obligatoire?</center></th>
             
-          <tr ng-repeat="doc in listTypeDoc">              
-              <td><center>{{doc.typeDocument}}</center></td>
+          <tr ng-repeat="doc in resultDoc">              
+              <td><center>{{doc.nom}}</center></td>
               <td><center>{{doc.isObligatoire}}</center></td>             
           </tr>
 

@@ -76,8 +76,8 @@
             <th><center>Type Document</center></th>
             <th><center>Obligatoire?</center></th>
             
-          <tr ng-repeat="doc in listTypeDoc">              
-              <td><center>{{doc.typeDocument.nom}}</center></td>
+          <tr ng-repeat="doc in resultDoc">              
+              <td><center>{{doc.nom}}</center></td>
               <td><center>{{doc.isObligatoire}}</center></td>             
           </tr>
 
@@ -101,8 +101,8 @@
             <th><center>Type Document</center></th>
             <th><center>Obligatoire</center></th>
             
-          <tr ng-repeat="dos in listTypeDossiers">              
-              <td><center>{{dos.typeDossier.nom}}</center></td>
+          <tr ng-repeat="dos in resultDos">              
+              <td><center>{{dos.nom}}</center></td>
               <td><center>{{dos.isObligatoire}}</center></td>             
           </tr>
 
