@@ -44,6 +44,7 @@ public class TypeMetadonneeDtoServiceImpl implements TypeMetadonneeDtoService{
 		
 		TypeMetadonnee d = new TypeMetadonnee();
 		d.setNom(typeMetadonneePostDTO.getNom());
+		d.setType(typeMetadonneePostDTO.getType());
 		d.setDate_creation(typeMetadonneePostDTO.getDate_creation());
 		d.setDate_last_modification(typeMetadonneePostDTO.getDate_last_modification());
 		d.setUser_creation(typeMetadonneePostDTO.getUser_creation());
@@ -96,8 +97,8 @@ public class TypeMetadonneeDtoServiceImpl implements TypeMetadonneeDtoService{
 	}
 
 	@Override
-	public void SetTypeMetadonneeById(String nom, Long id) {
-		metier.SetTypeMetadonneeById(nom, id);
+	public void SetTypeMetadonneeById(String nom, String type,Long id) {
+		metier.SetTypeMetadonneeById(nom,type, id);
 		
 	}
 

@@ -22,6 +22,7 @@ public class TypeDossier implements Serializable {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long                       id;
     private String                     nom;
+    private String statut;
     @ManyToMany( mappedBy = "typeDossiers" )
     private Collection<Profil>         profils;
     @OneToMany( mappedBy = "typeDossiers" )
@@ -110,7 +111,15 @@ public class TypeDossier implements Serializable {
         this.nom = nom;
     }
 
-    public Long getId() {
+    public String getStatut() {
+		return statut;
+	}
+
+	public void setStatut(String statut) {
+		this.statut = statut;
+	}
+
+	public Long getId() {
         return id;
     }
 

@@ -22,6 +22,7 @@ public class TypeDocument implements Serializable {
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private Long                       id;
     private String                     nom;
+    private String statut;
     @ManyToMany( mappedBy = "typeDocuments" )
     private Collection<Profil>         profils;
     @OneToMany( mappedBy = "typeDocument" )
@@ -117,5 +118,15 @@ public class TypeDocument implements Serializable {
     public TypeDocument() {
         // TODO Auto-generated constructor stub
     }
+
+	public String getStatut() {
+		return statut;
+	}
+
+	public void setStatut(String statut) {
+		this.statut = statut;
+	}
+    
+    
 
 }

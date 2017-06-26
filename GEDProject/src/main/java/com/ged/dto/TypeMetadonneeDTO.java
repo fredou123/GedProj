@@ -17,6 +17,7 @@ public class TypeMetadonneeDTO {
 	 
 	    private Long                     id;
 	    private String                   nom;
+	    private String type;
 	    
 	    private Collection<Long> typeDossierTypeMetadonnees = new ArrayList<Long>();
 	    private Collection<Long> typeDocumentTypeMetadonnees = new ArrayList<Long>();
@@ -33,6 +34,7 @@ public class TypeMetadonneeDTO {
 		public TypeMetadonneeDTO(TypeMetadonnee typeMetadonnee) {
 			this.id = typeMetadonnee.getId();
 			this.nom = typeMetadonnee.getNom();
+			this.type = typeMetadonnee.getType();
 			
 			if (typeMetadonnee.getTypeDocumentTypeMetadonnees()!=null){
 			for (TypeDocumentTypeMetadonnee t : typeMetadonnee.getTypeDocumentTypeMetadonnees()){
@@ -63,6 +65,15 @@ public class TypeMetadonneeDTO {
 		public void setNom(String nom) {
 			this.nom = nom;
 		}
+		
+		public String getType() {
+			return type;
+		}
+
+		public void setType(String type) {
+			this.type = type;
+		}
+
 		public Collection<Long> getTypeDossierTypeMetadonnees() {
 			return typeDossierTypeMetadonnees;
 		}

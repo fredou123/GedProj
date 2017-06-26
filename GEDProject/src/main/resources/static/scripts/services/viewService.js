@@ -1,7 +1,20 @@
 angular.module('viewService', [])
-    .service('ViewService', function () {
+    .service('ViewService', function ($http) {
 
     	var self = this;
+    	
+    	this.users = [];
+    	
+    	this.getUsers = function(){
+    		
+    		var promise = $http.get("/typeDossiers").success(function(response){ 
+    			self.users = response;  //ajax request to fetch data into $scope.data
+                return self.users;
+            });
+    		
+    		return promise;    
+		};
+			
 
         this.myDatas = [
 			{ filterName: 'filtre 0', request : '0'},
@@ -42,6 +55,7 @@ angular.module('viewService', [])
 		this.typeMetas = [];
 		this.typeDocs = [];
 		this.typeDos = [];
+		this.status = [{nom:"complet"},{nom:"incomplet"}];
 
 
     });

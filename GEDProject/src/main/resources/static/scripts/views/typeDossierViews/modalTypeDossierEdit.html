@@ -10,6 +10,9 @@
               <input type="text" class="form-control" ng-model="data.nom"></input>
             </li>          
           </ul>
+          <div >Statut du document: <select ng-init="statut.nom='incomplet'" ng-model="statut" ng-options="statut.nom for statut in status" placeholder="type" ng-click="" >
+                  </select>
+            </div> 
           </center>
         </div>
         <div class="modal-footer">

@@ -36,6 +36,7 @@ public class TypeDocumentDtoServiceIplm implements TypeDocumentDtoService {
 		
 		TypeDocument d = new TypeDocument();
 		d.setNom(typeDocumentPostDto.getNom());
+		d.setStatut(typeDocumentPostDto.getStatut());
 		d.setDate_creation(typeDocumentPostDto.getDate_creation());
 		d.setDate_last_modification(typeDocumentPostDto.getDate_last_modification());
 		d.setUser_creation(typeDocumentPostDto.getUser_creation());
@@ -92,8 +93,8 @@ public class TypeDocumentDtoServiceIplm implements TypeDocumentDtoService {
 	}
 
 	@Override
-	public void SetTypeDocumentById(String nom, Long id) {
-		metier.SetTypeDocumentById(nom, id);	
+	public void SetTypeDocumentById(String nom, String statut,Long id) {
+		metier.SetTypeDocumentById(nom,statut,id);	
 	}
 
 	@Override

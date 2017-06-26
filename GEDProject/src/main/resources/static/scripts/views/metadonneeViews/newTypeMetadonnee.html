@@ -8,13 +8,17 @@
             <li class="list-group-item list-group-item-success">
               <label for="text"> Nom de la métadonnée  </label>
               <input type="text" class="form-control" ng-model="nom"></input>
+            </li>
+            <li class="list-group-item list-group-item-success">
+              <label for="text"> Type de la métadonnée  </label>
+              <input type="text" class="form-control" ng-model="type"></input>
             </li>          
           </ul>
           </center>
           
           <!-- ++++++++++++++++++++++++++++++ Type Document ++++++++++++++++++++++++++++++++++++++++ -->
           <center>
-            <div><button class="" ng-click="vue()">Ajouter un type de document</button></div>
+            <div><button class="" ng-click="selectDoc()">Ajouter un type de document</button></div>
             <div ng-if="vueIf">
             <div >Nom du document: <select ng-init="" ng-model="typeDocument" ng-options="typeM.nom for typeM in typeDocs" placeholder="type" ng-click="" >
                   </select>
@@ -123,7 +127,7 @@
           
         </div>
             <div class="">
-            <button class="btn btn-primary" type="button" ng-click="save(nom)">Enregistrer</button>
+            <button class="btn btn-primary" type="button" ng-click="save(nom,type)">Enregistrer</button>
             <button class="btn btn-warning" type="button" ng-click="close()">Annuler</button>
         </div> 
 </div>

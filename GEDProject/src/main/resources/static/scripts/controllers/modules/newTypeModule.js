@@ -1,10 +1,11 @@
-angular.module('newTypeModule', ['viewService'])
+angular.module('newTypeModule', ['viewService','ui.bootstrap'])
 .controller('NewTypeDocumentCtrl', ['$scope','ViewService','$http','$window', function($scope,ViewService,$http,$window){
 
 $scope.typeMetas = ViewService.typeMetas;
 $scope.typeDos = ViewService.typeDos;
 $scope.typeMetadonnee = {};
 $scope.typeDossier = {};
+$scope.status = ViewService.status;
 
 $scope.vueIf = false;
 
@@ -114,17 +115,21 @@ $scope.typeDossierTypeDocument = {
 
 $scope.typeDocument = {
         nom:null,
+        statut:null,
         date_creation:null,
         date_last_modification: null,
         typeDocumentTypeMetadonnees:$scope.typeDocumentTypeMetadonnees,
         typeDossierTypeDocuments:$scope.typeDossierTypeDocuments
     };
 
-$scope.save = function(nom){
+$scope.save = function(nom,statut){
 
 	$scope.typeDocument.nom = nom;
+	$scope.typeDocument.statut = statut.nom;
 	if ($scope.typeDocument.nom == null || $scope.typeDocument.nom == ""){
 		alert ("nom du type de document manquant");
+	}if (!$scope.typeDocument.statut){
+		alert ("statut du type de document manquant");
 	}else{
 		var data = $scope.typeDocument;
 	console.log($scope.typeDocument);
@@ -132,12 +137,12 @@ $scope.save = function(nom){
 	$http.post("/typeDocuments/", JSON.stringify(data) )
             .success(function(response){ 
                 console.log(response);
+                $window.location.href = '#/typeDocument';
              })
             .error(function(response){
                 console.log(response.message);
                 console.log("erreur+++++++++");
     });
-    $window.location.href = '#/typeDocument';
 	}
 	
 }
@@ -147,7 +152,7 @@ $scope.close = function(){
 }
 
 }])
-.controller('NewTypeDossierCtrl', ['$scope','ViewService','$http','$window', function($scope,ViewService,$http,$window){
+.controller('NewTypeDossierCtrl', ['$scope','ViewService','$http','$window','$location', function($scope,ViewService,$http,$window,$location){
 
 $scope.typeMetas = ViewService.typeMetas;
 console.log($scope.typeMetas);
@@ -155,6 +160,7 @@ console.log("+++++++++++++");
 $scope.typeDocs = ViewService.typeDocs;
 $scope.typeMetadonnee = {};
 $scope.typeDocument = {};
+$scope.status = ViewService.status;
 
 $scope.vueIf = false;
 $scope.vue = function(){
@@ -264,15 +270,17 @@ $scope.typeDossierTypeDocument = {
 
 $scope.typeDossier = {
         nom:null,
+        statut:null,
         date_creation:new Date(),
         date_last_modification: new Date(),
         typeDossierTypeMetadonnees:$scope.typeDossierTypeMetadonnees,
         typeDossierTypeDocuments:$scope.typeDossierTypeDocuments
 };
 
-$scope.save = function(nom){
+$scope.save = function(nom,statut){
 
 	$scope.typeDossier.nom = nom;
+	$scope.typeDossier.statut = statut.nom;
 
 	if ($scope.typeDossier.nom == null || $scope.typeDossier.nom == ""){
 		alert("nom du type de dossier manquant");
@@ -283,11 +291,11 @@ $scope.save = function(nom){
 	$http.post("/typeDossiers/", JSON.stringify(data) )
             .success(function(response){ 
                 console.log(response);
+                $window.location.href = '#/typeDossier';
              })
             .error(function(response){
                 console.log(response.message);
     });
-    $window.location.href = '#/typeDossier';
 	}
 }
 
@@ -296,7 +304,7 @@ $scope.close = function(){
 }
 
 }])
-.controller('NewTypeMetadonneeCtrl', ['$scope','ViewService','$http','$window', function($scope,ViewService,$http,$window){
+.controller('NewTypeMetadonneeCtrl', ['$scope','ViewService','$http','$window','$uibModal', function($scope,ViewService,$http,$window,$uibModal){
 	
 	$scope.typeDos = ViewService.typeDos;
 	$scope.typeDossier = {};
@@ -415,24 +423,32 @@ $scope.close = function(){
 	        typeDocumentTypeMetadonnees:$scope.typeDocumentTypeMetadonnees,
 	        typeDossierTypeMetadonnees:$scope.typeDossierTypeMetadonnees
 	    };
+	
+$scope.selectDoc = function(){
+	var uibModalInstance = $uibModal.open({
+        templateUrl : 'scripts/views/metadonneeViews/modalTypeMetadonneeSelectDoc.html',
+        controller: 'ModalSelectDocCtrl'
+        });
+}
 
-$scope.save = function(nom){
+$scope.save = function(nom,type){
 
 	if (nom == null || nom == ""){
 		alert("nom du type de la metadonnéé manquant");
 	}else{
 		$scope.typeMetadonnee.nom = nom;
+		$scope.typeMetadonnee.type = type;
 		var data = $scope.typeMetadonnee;
 		console.log(data);
 	$http.post("/typeMetadonnees/", JSON.stringify(data) )
             .success(function(response){ 
                 console.log(response);
+                $window.location.href = '#/typeMetadonnee';
              })
             .error(function(response){
                 console.log(response.message);
                 console.log("erreur+++++++++");
     });
-    $window.location.href = '#/typeMetadonnee';
 	}
 }
 

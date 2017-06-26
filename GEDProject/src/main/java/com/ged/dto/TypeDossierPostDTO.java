@@ -13,6 +13,7 @@ public class TypeDossierPostDTO {
 	
 	private Long                       id;
     private String                     nom;
+    private String statut;
     private Collection<TypeDossierTypeMetadonneeDTO> typeDossierTypeMetadonnees = new ArrayList<TypeDossierTypeMetadonneeDTO>();
     private Collection<TypeDossierTypeDocumentDTO> typeDossierTypeDocuments = new ArrayList<TypeDossierTypeDocumentDTO>();
     private Date date_creation;
@@ -23,6 +24,7 @@ public class TypeDossierPostDTO {
     public TypeDossierPostDTO(TypeDossier typeDossier) {
 		this.id = typeDossier.getId();
 		this.nom = typeDossier.getNom();
+		this.statut = typeDossier.getStatut();
 		this.date_creation = typeDossier.getDate_creation();
 		this.date_last_modification = typeDossier.getDate_last_modification();
 		this.user_creation = typeDossier.getUser_creation();
@@ -68,6 +70,14 @@ public class TypeDossierPostDTO {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public String getStatut() {
+		return statut;
+	}
+
+	public void setStatut(String statut) {
+		this.statut = statut;
 	}
 
 	public Collection<TypeDossierTypeMetadonneeDTO> getTypeDossierTypeMetadonnees() {

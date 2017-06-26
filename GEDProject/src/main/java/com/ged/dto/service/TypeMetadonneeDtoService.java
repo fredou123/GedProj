@@ -12,7 +12,7 @@ public interface TypeMetadonneeDtoService {
 	public TypeMetadonneePostDTO saveTypeMetadonnee(TypeMetadonneePostDTO typeMetadonnee);
 	public List<TypeMetadonneeDTO> getAllTypeMetadonnees();
 	public TypeMetadonneeDTO deleteTypeMetadonnee(TypeMetadonneeDTO typeMetadonneeDto);
-	public void SetTypeMetadonneeById (String nom,Long id);
+	public void SetTypeMetadonneeById (String nom,String type,Long id);
 	public Collection<TypeMetadonneeDTO> getListTypeMetadonneeById(Collection<Long> ids);
 	public void deleteSelectedTypeMetadonnee(Collection<TypeMetadonneeDTO> c);
 

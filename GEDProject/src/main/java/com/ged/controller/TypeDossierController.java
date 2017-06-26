@@ -47,8 +47,8 @@ public class TypeDossierController {
     }
 	
 	@RequestMapping( value = "/typeDossiers", method = RequestMethod.PUT )
-	public void SetTypeDossierById (@RequestParam String nom, @RequestParam Long id){
-		 metier.SetTypeDossierById(nom, id);
+	public void SetTypeDossierById (@RequestParam String nom,@RequestParam String statut, @RequestParam Long id){
+		 metier.SetTypeDossierById(nom,statut,id);
 	}
 	
 	@RequestMapping( value = "/typeDossiers/all", method = RequestMethod.DELETE )

@@ -47,8 +47,8 @@ public class TypeMetadonneeController {
     }
 	
 	@RequestMapping( value = "/typeMetadonnees", method = RequestMethod.PUT )
-	public void SetTypeMetadonneeById (@RequestParam String nom, @RequestParam Long id){
-		 metier.SetTypeMetadonneeById(nom, id);
+	public void SetTypeMetadonneeById (@RequestParam String nom, @RequestParam String type,@RequestParam Long id){
+		 metier.SetTypeMetadonneeById(nom, type, id);
 	}
 	
 	@RequestMapping( value = "/typeMetadonnees/all", method = RequestMethod.DELETE )

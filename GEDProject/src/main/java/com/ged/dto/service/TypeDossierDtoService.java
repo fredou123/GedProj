@@ -12,7 +12,7 @@ public interface TypeDossierDtoService {
 	public TypeDossierPostDTO saveTypeDossier(TypeDossierPostDTO typeDocument);
 	public List<TypeDossierDTO> getAllTypeDossiers();
 	public TypeDossierDTO deleteTypeDossier(TypeDossierDTO typeDossierDto);
-	public void SetTypeDossierById (String nom,Long id);
+	public void SetTypeDossierById (String nom,String statut,Long id);
 	public Collection<TypeDossierDTO> getListTypeDossierById(Collection<Long> ids);
 	public void deleteSelectedTypeDossier(Collection<TypeDossierDTO> c);
 

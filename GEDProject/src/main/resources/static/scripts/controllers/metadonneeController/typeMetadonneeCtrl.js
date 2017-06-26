@@ -66,6 +66,7 @@ angular.module('controllerMetadonnee', ["viewService","viewDossierService","ui.b
 
     $scope.viewData = function(data){
         ViewDossierService.user = data;
+        console.log(data);
     }
     
     $scope.typeDocs = [];
@@ -106,12 +107,12 @@ angular.module('controllerMetadonnee', ["viewService","viewDossierService","ui.b
         });
         var instance = uibModalInstance.result.then(function (response) {
             var data = response;
-            var param = "nom="+data.nom+"&id="+data.id;
+            var param = "nom="+data.nom+"&type="+data.type+"&id="+data.id;
             var config = {
                 headers:{'Content-Type' : 'application/x-www-form-urlencoded'}
             };
             $http.put("/typeMetadonnees/", param, config)
-            console.log("opppppp");
+            console.log(param);
         }, function () {
              $log.info('modal-component dismissed at: ' + new Date());
              return $q.reject();
@@ -121,7 +122,7 @@ angular.module('controllerMetadonnee', ["viewService","viewDossierService","ui.b
             $http.get("/typeMetadonnees")
             .success(function(response){ 
                 $scope.users = response;
-                console.log("okkkk");
+                $route.reload();
              })
             .error(function(response){
                 console.log("erreur");

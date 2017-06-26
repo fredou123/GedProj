@@ -8,6 +8,6 @@ import com.ged.entities.TypeDocument;
 
 public interface TypeDocumentRepository extends JpaRepository<TypeDocument, Long>{
 	@Modifying
-	@Query("update TypeDocument t set t.nom = ?1 where t.id = ?2")
-	public void SetTypeDocumentById (String nom,Long id);
+	@Query("update TypeDocument t set t.nom = ?1 , t.statut =?2 where t.id = ?3")
+	public void SetTypeDocumentById (String nom,String statut,Long id);
 }

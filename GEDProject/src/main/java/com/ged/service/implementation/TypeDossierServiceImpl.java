@@ -1,6 +1,7 @@
 package com.ged.service.implementation;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,9 @@ public class TypeDossierServiceImpl implements TypeDossierService {
 	@Override
 	@Transactional
 	public TypeDossier saveTypeDossier(TypeDossier typeDossier) {	
-		
+		 
+		 typeDossier.setDate_creation(new Date());
+		 typeDossier.setDate_last_modification(new Date());
 		 typeDossier = repository.save(typeDossier);
 		
 			for (TypeDossierTypeMetadonnee t : typeDossier.getTypeDossierTypeMetadonnees()){
@@ -78,8 +81,9 @@ public class TypeDossierServiceImpl implements TypeDossierService {
 	
 	@Override
 	@Transactional
-	public void SetTypeDossierById(String nom, Long id) {
-		repository.SetTypeDossierById(nom, id);
+	public void SetTypeDossierById(String nom, String statut,Long id) {
+		getTypeDossier(id).setDate_last_modification(new Date());
+		repository.SetTypeDossierById(nom,statut,id);
 		
 	}
 

@@ -8,7 +8,10 @@
             <li class="list-group-item list-group-item-success">
               <label for="text"> Nom du dossier  </label>
               <input type="text" class="form-control" ng-model="nom"></input>
-            </li>          
+            </li>
+            <div >Statut du dossier: <select ng-init="statut.nom='incomplet'" ng-model="statut" ng-options="statut.nom for statut in status" placeholder="type" ng-click="" >
+                  </select>
+            </div>      
           </ul>
           </center>
                     <!-- +++++++++++++++++++++++ Type Metadonnée  ++++++++++++++++++++++++++++++-->
@@ -115,7 +118,7 @@
 
         </div>
             <div class="">
-            <button class="btn btn-primary" type="button" ng-click="save(nom)">Enregistrer</button>
+            <button class="btn btn-primary" type="button" ng-click="save(nom,statut)">Enregistrer</button>
             <button class="btn btn-warning" type="button" ng-click="close()">Annuler</button>
         </div> 
 </div>

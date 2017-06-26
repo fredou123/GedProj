@@ -1,6 +1,7 @@
 package com.ged.service.implementation;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class TypeDocumentServiceImpl implements TypeDocumentService{
 	@Override
 	@Transactional
 	public TypeDocument saveTypeDocument(TypeDocument typeDocument){
-			
+		typeDocument.setDate_creation(new Date());
+		typeDocument.setDate_last_modification(new Date());
 		typeDocument = repository.save(typeDocument);
 		
 		for (TypeDocumentTypeMetadonnee t : typeDocument.getTypeDocumentTypeMetadonnees()){
@@ -79,8 +81,9 @@ public class TypeDocumentServiceImpl implements TypeDocumentService{
 
 	@Override
 	@Transactional
-	public void SetTypeDocumentById(String nom, Long id) {
-		repository.SetTypeDocumentById(nom, id);
+	public void SetTypeDocumentById(String nom, String statut, Long id) {
+		getTypeDocument(id).setDate_last_modification(new Date());
+		repository.SetTypeDocumentById(nom, statut,id);
 		
 	}
 

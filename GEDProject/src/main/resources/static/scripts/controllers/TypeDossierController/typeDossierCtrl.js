@@ -1,5 +1,6 @@
 angular.module('controllerTypeDossier', ["viewService","viewDossierService","ui.bootstrap"])
-.controller('TypeDossierCtrl', ['$scope','ViewService','$http','ViewDossierService','$uibModal','$log','$window','$q', function($scope, ViewService,$http,ViewDossierService,$uibModal,$log,$window,$q){
+.controller('TypeDossierCtrl', ['$scope','ViewService','$http','ViewDossierService','$uibModal','$log','$window','$q','$route', function($scope, ViewService,$http,ViewDossierService,$uibModal,$log,$window,$q,$route){
+	
 	$scope.id = 1;
     $scope.users = []; //declare an empty array
     $scope.users_init = []; //declare an empty array
@@ -7,9 +8,12 @@ angular.module('controllerTypeDossier', ["viewService","viewDossierService","ui.
     $scope.users_assurance = []; //declare an empty array
     $scope.user_selected = [];
     $scope.url_init = "json/typeDossier/type_dossier1.json";
-    $http.get("/typeDossiers").success(function(response){ 
-        $scope.users = response;  //ajax request to fetch data into $scope.data
-    });
+    
+    
+    // fetch promise from ViewService service
+    ViewService.getUsers().then(function(data) {
+		$scope.users = data.data;
+	});
     //à retirer si BD
     $http.get("json/typeDossier/type_dossier2.json").success(function(response){ 
         $scope.users_banque = response;  //ajax request to fetch data into $scope.data
@@ -105,7 +109,7 @@ angular.module('controllerTypeDossier', ["viewService","viewDossierService","ui.
         });
         var instance = uibModalInstance.result.then(function (response) {
             var data = response;
-            var param = "nom="+data.nom+"&id="+data.id;
+            var param = "nom="+data.nom+"&statut="+data.statut+"&id="+data.id;
             var config = {
                 headers:{'Content-Type' : 'application/x-www-form-urlencoded'}
             };
@@ -120,7 +124,7 @@ angular.module('controllerTypeDossier', ["viewService","viewDossierService","ui.
             $http.get("/typeDossiers/")
             .success(function(response){ 
                 $scope.users = response;
-                console.log("okkkk");
+                $route.reload();
              })
             .error(function(response){
                 console.log("erreur");
@@ -281,13 +285,16 @@ angular.module('controllerTypeDossier', ["viewService","viewDossierService","ui.
     }
    
 }])
-.controller('modalEditDossierCtrl', ['$scope','$uibModalInstance','data', function($scope,$uibModalInstance,data){
-   
+.controller('modalEditDossierCtrl', ['$scope','$uibModalInstance','ViewService','data', function($scope,$uibModalInstance,ViewService,data){
+   $scope.status = ViewService.status;
    $scope.data = data;
    $scope.close = function(){
         $uibModalInstance.dismiss('cancel');
     }
     $scope.send = function(){
+    	if ($scope.statut.nom){
+    		$scope.data.statut = $scope.statut.nom;
+    	}
         $uibModalInstance.close($scope.data);
     }
 }])

@@ -43,10 +43,10 @@
 
           <ul class="list-group">            
             <li class="list-group-item list-group-item-success">
-              <span>Date Dernière Modification : {{user.datemodif}}</span>
+              <span>Date Dernière Modification : {{user.date_last_modification | date:'yyyy-MM-dd'}}</span>
             </li>
             <li class="list-group-item list-group-item-success">
-              <span>User Dernière Modification : {{user.user_modif}}</span>
+              <span>User Dernière Modification : {{user.user_last_modification}}</span>
             </li> 
                         
           </ul>
@@ -55,10 +55,10 @@
         <div class="col-md-6 -col-md-offset-6">
            <ul class="list-group">              
               <li class="list-group-item list-group-item-success">
-                  <span>Date Création : {{user.datecre}}</span>
+                  <span>Date Création : {{user.date_creation | date:'yyyy-MM-dd'}}</span>
               </li> 
                <li class="list-group-item list-group-item-success">
-                  <span>User Modification : {{user.user_modif}}</span>
+                  <span>User Création : {{user.user_creation}}</span>
               </li>      
            </ul>
         </div>

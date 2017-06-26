@@ -3,7 +3,7 @@ var app = angular.module("GEDapp", ["ngRoute","ui.bootstrap","controllerMetadonn
 	                                "controllerProfil","controllerGroup","controllerTypeDossier","controllerTypeDocument",
 	                                "controllerDocument","controllerDossier","controllerEdit",
 	                                 "newDossier","newDocument","angularUtils.directives.dirPagination","viewDossierService",
-	                                 "viewDossier","cloneDir","cloneDoc","viewModule","newTypeModule"]);
+	                                 "viewDossier","cloneDir","cloneDoc","viewModule","newTypeModule","selectModule"]);
 
 app.config(['$routeProvider',function($routeProvider) {
 	$routeProvider

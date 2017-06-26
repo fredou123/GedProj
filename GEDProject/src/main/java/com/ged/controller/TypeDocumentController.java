@@ -49,8 +49,8 @@ public class TypeDocumentController {
     }
 	
 	@RequestMapping( value = "/typeDocuments", method = RequestMethod.PUT )
-	public void SetTypeDocumentById (@RequestParam String nom, @RequestParam Long id){
-		documentDto.SetTypeDocumentById(nom, id);
+	public void SetTypeDocumentById (@RequestParam String nom, @RequestParam String statut, @RequestParam Long id){
+		documentDto.SetTypeDocumentById(nom,statut,id);
 	}
 	
 	@RequestMapping( value = "/typeDocuments/all", method = RequestMethod.DELETE )

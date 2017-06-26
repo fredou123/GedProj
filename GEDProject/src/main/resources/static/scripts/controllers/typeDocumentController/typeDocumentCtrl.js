@@ -92,6 +92,7 @@ angular.module('controllerTypeDocument', ["viewService","viewDossierService","ui
     }
 
     $scope.edit_data = function(type){
+    	console.log(type);
         var myData = type;
         var uibModalInstance = $uibModal.open({
         templateUrl : 'scripts/views/typeDocumentViews/modalTypeDocumentEdit.html',
@@ -105,12 +106,13 @@ angular.module('controllerTypeDocument', ["viewService","viewDossierService","ui
         });
         var instance = uibModalInstance.result.then(function (response) {
             var data = response;
-            var param = "nom="+data.nom+"&id="+data.id;
+            console.log(response);
+            var param = "nom="+data.nom+"&statut="+data.statut+"&id="+data.id;
             var config = {
                 headers:{'Content-Type' : 'application/x-www-form-urlencoded'}
             };
             $http.put("/typeDocuments/", param, config)
-            console.log("opppppp");
+            console.log(param);
         }, function () {
              $log.info('modal-component dismissed at: ' + new Date());
              return $q.reject();
@@ -120,7 +122,7 @@ angular.module('controllerTypeDocument', ["viewService","viewDossierService","ui
             $http.get("/typeDocuments")
             .success(function(response){ 
                 $scope.users = response;
-                console.log("okkkk");
+                $route.reload();
              })
             .error(function(response){
                 console.log("erreur");
@@ -252,19 +254,24 @@ angular.module('controllerTypeDocument', ["viewService","viewDossierService","ui
     }
    
 }])
-.controller('modalEditCtrl', ['$scope','$uibModalInstance','data', function($scope,$uibModalInstance,data){
-   
+.controller('modalEditCtrl', ['$scope','$uibModalInstance','ViewService','data', function($scope,$uibModalInstance,ViewService,data){
+   $scope.status = ViewService.status;
+   $scope.statut = {};
    $scope.data = data;
    $scope.close = function(){
         $uibModalInstance.dismiss('cancel');
     }
     $scope.send = function(){
+    	if ($scope.statut.nom){
+    		$scope.data.statut = $scope.statut.nom;
+    	}
         $uibModalInstance.close($scope.data);
     }
 }])
 .controller('modalDeleteCtrl', ['$scope','$uibModalInstance','data', function($scope,$uibModalInstance,data){
    
    $scope.data = data;
+   
    $scope.close = function(){
         $uibModalInstance.dismiss('cancel');
     }

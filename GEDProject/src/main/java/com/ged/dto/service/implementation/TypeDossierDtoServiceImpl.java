@@ -42,6 +42,7 @@ public class TypeDossierDtoServiceImpl implements TypeDossierDtoService {
 		
 		TypeDossier d = new TypeDossier();
 		d.setNom(typeDossierPostDTO.getNom());
+		d.setStatut(typeDossierPostDTO.getStatut());
 		d.setDate_creation(typeDossierPostDTO.getDate_creation());
 		d.setDate_last_modification(typeDossierPostDTO.getDate_last_modification());
 		d.setUser_creation(typeDossierPostDTO.getUser_creation());
@@ -92,8 +93,8 @@ public class TypeDossierDtoServiceImpl implements TypeDossierDtoService {
 	}
 
 	@Override
-	public void SetTypeDossierById(String nom, Long id) {
-		metier.SetTypeDossierById(nom, id);
+	public void SetTypeDossierById(String nom, String statut, Long id) {
+		metier.SetTypeDossierById(nom,statut,id);
 		
 	}
 

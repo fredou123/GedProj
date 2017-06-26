@@ -10,7 +10,7 @@ public interface TypeDossierService {
 	public TypeDossier saveTypeDossier(TypeDossier typeDossier);
 	public TypeDossier deleteTypeDossier(TypeDossier typeDossier);
 	public List<TypeDossier> getAllTypeDossiers();
-	public void SetTypeDossierById (String nom,Long id);
+	public void SetTypeDossierById (String nom,String statut,Long id);
 	public void deleteSelectedTypeDossier(Collection<TypeDossier> c);
 	public Collection<TypeDossier> getListTypeDossierById(Collection<Long> ids);
 }

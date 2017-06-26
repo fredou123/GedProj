@@ -11,7 +11,7 @@ public interface TypeDocumentService {
 	public TypeDocument saveTypeDocument(TypeDocument d);
 	public TypeDocument deleteTypeDocument(TypeDocument typeDocument);
 	public List<TypeDocument> getAllTypeDocuments();
-	public void SetTypeDocumentById (String nom,Long id);
+	public void SetTypeDocumentById (String nom,String statut,Long id);
 	public void deleteSelectedTypeDocument(Collection<TypeDocument> c);
 	public Collection<TypeDocument> getListTypeDocumentById(Collection<Long> ids);
 

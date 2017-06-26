@@ -16,6 +16,7 @@ public class TypeDossierDTO {
 	
 	private Long                       id;
     private String                     nom;
+    private String statut;
     private Date date_creation;
     private Date date_last_modification;
     private User user_creation;
@@ -32,6 +33,7 @@ public class TypeDossierDTO {
 	public TypeDossierDTO(TypeDossier typeDossier) {
 		this.id = typeDossier.getId();
 		this.nom =typeDossier.getNom();
+		this.statut = typeDossier.getStatut();
 		if(typeDossier.getTypeDossierTypeMetadonnees()!=null){
 		for (TypeDossierTypeMetadonnee t : typeDossier.getTypeDossierTypeMetadonnees()){
 			this.typeDossierTypeMetadonnees.add(t.getId());
@@ -60,6 +62,16 @@ public class TypeDossierDTO {
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	
+	
+
+	public String getStatut() {
+		return statut;
+	}
+
+	public void setStatut(String statut) {
+		this.statut = statut;
 	}
 
 	public Collection<Long> getTypeDossierTypeMetadonnees() {

@@ -11,7 +11,7 @@ public interface TypeMetadonneeService {
 	public TypeMetadonnee saveTypeMetadonnee(TypeMetadonnee d);
 	public TypeMetadonnee deleteTypeMetadonnee(TypeMetadonnee typeMetadonnee);
 	public List<TypeMetadonnee> getAllTypeMetadonnees();
-	public void SetTypeMetadonneeById (String nom,Long id);
+	public void SetTypeMetadonneeById (String nom,String type,Long id);
 	public void deleteSelectedTypeMetadonnee(Collection<TypeMetadonnee> c);
 	public Collection<TypeMetadonnee> getListTypeMetadonneeById(Collection<Long> ids);
 

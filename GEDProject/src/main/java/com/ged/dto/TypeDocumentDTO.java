@@ -17,6 +17,7 @@ public class TypeDocumentDTO {
 	
     private Long                       id;
     private String                     nom;
+    private String statut;
     private Collection<Long> typeDocumentTypeMetadonnees = new ArrayList<Long>();
     private Collection<Long> typeDossierTypeDocuments = new ArrayList<Long>();
     private Date date_creation;
@@ -35,6 +36,7 @@ public class TypeDocumentDTO {
 		super();
 		this.id = typeDocument.getId();
 		this.nom = typeDocument.getNom();
+		this.statut = typeDocument.getStatut();
 		if(typeDocument.getTypeDocumentTypeMetadonnees()!=null){
 		for (TypeDocumentTypeMetadonnee t : typeDocument.getTypeDocumentTypeMetadonnees()){
 			this.typeDocumentTypeMetadonnees.add(t.getId());
@@ -63,6 +65,13 @@ public class TypeDocumentDTO {
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	
+	public String getStatut() {
+		return statut;
+	}
+	public void setStatut(String statut) {
+		this.statut = statut;
 	}
 	public Collection<Long> getTypeDocumentTypeMetadonnees() {
 		return typeDocumentTypeMetadonnees;

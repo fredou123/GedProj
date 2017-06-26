@@ -1,6 +1,7 @@
 package com.ged.service.implementation;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,10 @@ public class TypeMetadonneeServiceImpl implements TypeMetadonneeService {
 	
 	@Override
 	public TypeMetadonnee saveTypeMetadonnee(TypeMetadonnee d) {
-		 repository.save(d);
+		d.setDate_creation(new Date()); 
+		d.setDate_last_modification(new Date());
+		repository.save(d);
+		
 		
 		for (TypeDossierTypeMetadonnee t: d.getTypeDossierTypeMetadonnees()){
 			t.setTypeMetadonnee(d);
@@ -74,13 +78,17 @@ public class TypeMetadonneeServiceImpl implements TypeMetadonneeService {
 
 	@Override
 	@Transactional
-	public void SetTypeMetadonneeById(String nom,Long id) {		
-		repository.SetTypeMetadonneeById(nom, id);
+	public void SetTypeMetadonneeById(String nom,String type,Long id) {		
+		getTypeMetadonnee(id).setDate_last_modification(new Date());
+		repository.SetTypeMetadonneeById(nom, type,id);
 	}
 
 	@Override
 	public void deleteSelectedTypeMetadonnee(Collection<TypeMetadonnee> c) {
-		repository.deleteInBatch(c);
+		
+		for (TypeMetadonnee t : c){
+			deleteTypeMetadonnee(t);
+		}
 		
 	}
 

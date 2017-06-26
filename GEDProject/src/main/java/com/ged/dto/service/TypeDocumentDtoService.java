@@ -12,7 +12,7 @@ public interface TypeDocumentDtoService {
 	public TypeDocumentPostDTO saveTypeDocument(TypeDocumentPostDTO typeDocument);
 	public List<TypeDocumentDTO> getAllTypeDocuments();
 	public TypeDocumentDTO deleteTypeDocument(TypeDocumentDTO typeDocumentDto);
-	public void SetTypeDocumentById (String nom,Long id);
+	public void SetTypeDocumentById (String nom,String statut,Long id);
 	public Collection<TypeDocumentDTO> getListTypeDocumentById(Collection<Long> ids);
 	public void deleteSelectedTypeDocument(Collection<TypeDocumentDTO> c);
 
