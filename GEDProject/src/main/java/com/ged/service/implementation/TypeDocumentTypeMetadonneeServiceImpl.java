@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
 import com.ged.entities.TypeDocumentTypeMetadonnee;
-import com.ged.metier.TypeDocumentMetier;
-import com.ged.metier.TypeDocumentTypeMetadonneeMetier;
-import com.ged.metier.TypeMetadonneeMetier;
 import com.ged.repository.TypeDocumentTypeMetadonneeRepository;
+import com.ged.service.TypeDocumentMetier;
+import com.ged.service.TypeDocumentTypeMetadonneeMetier;
+import com.ged.service.TypeMetadonneeMetier;
 
 @Service
-public class TypeDocumentTypeMetadonneeImpl implements TypeDocumentTypeMetadonneeMetier{
+public class TypeDocumentTypeMetadonneeServiceImpl implements TypeDocumentTypeMetadonneeMetier{
 	
 	@Autowired
 	private TypeDocumentTypeMetadonneeRepository repository;

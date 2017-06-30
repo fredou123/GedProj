@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.bean.UserForm;
 import com.ged.dto.UserDTO;
-import com.ged.metier.UserService;
+import com.ged.service.UserService;
 
 @RestController
 public class UserController {

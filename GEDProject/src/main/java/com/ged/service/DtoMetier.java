@@ -1,4 +1,4 @@
-package com.ged.metier;
+package com.ged.service;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import java.util.Collection;
 
@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ged.entities.Document;
-import com.ged.metier.DocumentMetier;
 import com.ged.repository.DocumentRepository;
+import com.ged.service.DocumentMetier;
 
 @Service
-public class DocumentMetierImpl implements DocumentMetier {
+public class DocumentServiceImpl implements DocumentMetier {
 
     @Autowired
     DocumentRepository documentRepository;

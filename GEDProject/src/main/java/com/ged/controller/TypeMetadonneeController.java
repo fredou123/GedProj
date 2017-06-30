@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeMetadonneeDTO;
 import com.ged.entities.TypeMetadonnee;
-import com.ged.metier.TypeMetadonneeMetier;
+import com.ged.service.TypeMetadonneeMetier;
 
 @RestController
 public class TypeMetadonneeController {

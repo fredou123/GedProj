@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +15,13 @@ import com.ged.entities.TypeDossier;
 import com.ged.entities.TypeDossierTypeDocument;
 import com.ged.entities.TypeDossierTypeMetadonnee;
 import com.ged.entities.TypeMetadonnee;
-import com.ged.metier.DtoMetier;
-import com.ged.metier.TypeDocumentMetier;
-import com.ged.metier.TypeDocumentTypeMetadonneeMetier;
-import com.ged.metier.TypeDossierMetier;
-import com.ged.metier.TypeDossierTypeDocumentMetier;
-import com.ged.metier.TypeDossierTypeMetadonneeMetier;
-import com.ged.metier.TypeMetadonneeMetier;
+import com.ged.service.DtoMetier;
+import com.ged.service.TypeDocumentMetier;
+import com.ged.service.TypeDocumentTypeMetadonneeMetier;
+import com.ged.service.TypeDossierMetier;
+import com.ged.service.TypeDossierTypeDocumentMetier;
+import com.ged.service.TypeDossierTypeMetadonneeMetier;
+import com.ged.service.TypeMetadonneeMetier;
 
 @Service
 public class DtoMetierImpl implements DtoMetier {

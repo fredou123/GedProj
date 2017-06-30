@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeDossierDTO;
 import com.ged.entities.TypeDossier;
-import com.ged.metier.TypeDossierMetier;
+import com.ged.service.TypeDossierMetier;
 
 @RestController
 public class TypeDossierController {

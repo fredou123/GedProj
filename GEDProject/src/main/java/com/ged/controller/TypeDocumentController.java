@@ -16,8 +16,8 @@ import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
 import com.ged.dto.TypeDossierTypeDocumentDTO;
 import com.ged.entities.TypeDocument;
 import com.ged.entities.TypeDocumentTypeMetadonnee;
-import com.ged.metier.TypeDocumentMetier;
-import com.ged.metier.TypeDocumentTypeMetadonneeMetier;
+import com.ged.service.TypeDocumentMetier;
+import com.ged.service.TypeDocumentTypeMetadonneeMetier;
 
 @RestController
 public class TypeDocumentController {

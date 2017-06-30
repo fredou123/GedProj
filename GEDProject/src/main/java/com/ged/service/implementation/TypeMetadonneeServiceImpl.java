@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,12 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ged.dto.TypeMetadonneeDTO;
 import com.ged.entities.TypeMetadonnee;
-import com.ged.metier.DtoMetier;
-import com.ged.metier.TypeMetadonneeMetier;
 import com.ged.repository.TypeMetadonneeRepository;
+import com.ged.service.DtoMetier;
+import com.ged.service.TypeMetadonneeMetier;
 
 @Service
-public class TypeMetadonneeMetierImpl implements TypeMetadonneeMetier {
+public class TypeMetadonneeServiceImpl implements TypeMetadonneeMetier {
 	
 	@Autowired
 	private TypeMetadonneeRepository repository;

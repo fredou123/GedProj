@@ -1,4 +1,4 @@
-package com.ged.metier.implementation;
+package com.ged.service.implementation;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import com.ged.dto.UserDTO;
 import com.ged.entities.Profil;
 import com.ged.entities.User;
 import com.ged.mapper.UserMapper;
-import com.ged.metier.UserService;
 import com.ged.repository.ProfilRepository;
 import com.ged.repository.UserRepository;
+import com.ged.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserDetailsService, UserService {

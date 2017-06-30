@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ged.dto.TypeDocumentTypeMetadonneeDTO;
 import com.ged.entities.TypeDocumentTypeMetadonnee;
-import com.ged.metier.TypeDocumentTypeMetadonneeMetier;
+import com.ged.service.TypeDocumentTypeMetadonneeMetier;
 
 @RestController
 public class TypeDocumentTypeMetadonneeController {
